@@ -1,0 +1,58 @@
+body{
+    background: url("images/RegistrationBackground.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.registration-box{
+    width: 330px;
+    height: 420px;
+    background-color: whitesmoke;
+    color: black;
+    top: 50%;
+    right: 20%;
+    position: absolute;
+    transform: translate(-30%, -50%);
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    text-align: center;
+}
+.registration-box:hover{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 6px 12px, rgba(0, 0, 0, 0.23) 0px 6px 12px;
+}
+
+.logo{
+    width: 250px;
+    margin: 20px;
+    margin-top: 40px;
+}
+
+.registration-box input[type="text"], input[type="password"]{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 200px;
+    height: 30px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #E592A4;
+    background-color: transparent;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.registration-box input[type="submit"]{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 200px;
+    height: 40px;
+    font-size: 18px;
+    outline: none;
+    border: 2px solid #E592A4;
+    background-color: transparent;
+    background-color: #E592A4;
+
+    color: white;
+    text-shadow: 1px 1px  black;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+=
