@@ -27,3 +27,9 @@ hs_err_pid*
 !/lib/*
 !/lib/xstream/*
 !/lib/xstream-hibernate/*
+.settings/org.eclipse.wst.common.project.facet.core.xml
+.settings/org.eclipse.wst.common.project.facet.core.xml
+.settings/org.eclipse.ltk.core.refactoring.prefs
+.settings/org.eclipse.wst.common.project.facet.core.xml
+.settings/org.eclipse.jdt.core.prefs
+.classpath
