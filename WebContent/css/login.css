@@ -1,23 +1,23 @@
 body{
-    background: url("images/RegistrationBackground.jpg");
+    background: url("images/background.jpg");
     background-size: cover;
     background-position: center;
 }
 
-.registration-box{
-    width: 400px;
-    height: 650px;
+.login-box{
+    width: 330px;
+    height: 380px;
     background-color: whitesmoke;
     color: black;
     top: 50%;
-    right: 20%;
+    left: 20%;
     position: absolute;
-    transform: translate(-20%, -50%);
+    transform: translate(-30%, -50%);
     box-sizing: border-box;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     text-align: center;
 }
-.registration-box:hover{
+.login-box:hover{
     box-shadow: rgba(0, 0, 0, 0.16) 0px 6px 12px, rgba(0, 0, 0, 0.23) 0px 6px 12px;
 }
 
@@ -27,7 +27,7 @@ body{
     margin-top: 40px;
 }
 
-.registration-box input[type="text"], input[type="password"], input[type="email"], input[type="date"]{
+.login-box input[type="text"], input[type="password"]{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     width: 200px;
     height: 30px;
@@ -40,7 +40,7 @@ body{
     margin-top: 20px;
 }
 
-.registration-box input[type="submit"]{
+.login-box input[type="submit"]{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     width: 200px;
     height: 40px;
@@ -55,14 +55,20 @@ body{
     margin-bottom: 10px;
     margin-top: 20px;
 }
-.registration-box input[type="radio"]{
-    margin: 10px;
-    margin-top: 20px;
-    color: #E592A4;
+
+p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 13px;
+
 }
 
-.registration-box label{
-    margin-left: 10px;
+a{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 16px;
+    color: #E592A4;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+}
+a:visited{
+    color: #E592A4;
 }
