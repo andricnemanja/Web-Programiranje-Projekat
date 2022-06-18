@@ -10,10 +10,14 @@
 		<img class="logo" src="images/logoE592A4.png">
 		<form id="forma">
 
+				<input type="text" name="firstName" placeholder="Ime">
+				<input type="text" name="lastName" placeholder="Prezime">
 				<input type="text" name="username" placeholder="Korisničko ime">
-				<input type="text" name="email" placeholder="E-mail">
+				<input type="combobox" name="gender" placeholder="Pol">
+				<input type="datetime" name="dateOfBirth" placeholder="Datum rodjenja">
 				<input type="password" name="password" placeholder="Lozinka">
-				<input type="submit" value="Registruj se">
+				<input type="text" name="email" placeholder="E-mail">
+				<input type="submit" v:onclick = "editStudent(s)" value="Registruj se">
 
 			<p id="error" hidden="true"></p>
 			<p id="success" hidden="true"></p>

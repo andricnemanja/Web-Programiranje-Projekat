@@ -1,10 +1,12 @@
 package beans;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Customer extends User {
-
+	
+	private String id;
 	private Membership membership;
 	private ArrayList<SportFacility> visitedFacilities;
 	private int points;
@@ -15,9 +17,16 @@ public class Customer extends User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer(String firstName, String lastName, String email, String username, String password, Gender gender,
+	public Customer(String firstName, String lastName, String email, String username, String password,
 			Date dateOfBirth, UserType userType, Membership membership) {
-		super(firstName, lastName, email, username, password, gender, dateOfBirth, userType);
+		super(firstName, lastName, email, username, password, Gender.MALE, dateOfBirth, userType);
+		visitedFacilities = new ArrayList<SportFacility>();
+		points = 0;
+	}
+	
+	public Customer(String firstName, String lastName, String email, String username, String password, Gender gender,
+			Date dateOfBirth) {
+		super(firstName, lastName, email, username, password, gender, dateOfBirth, UserType.CUSTOMER);
 		visitedFacilities = new ArrayList<SportFacility>();
 		points = 0;
 	}
