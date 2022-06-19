@@ -5,34 +5,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div id ="facilities">
-		<h3>{{title}}</h3>
-
-		<table border="1" id="tabela">
-			<thead>
-				<tr bgcolor="lightgrey">
-					<th>Naziv</th>
-					<th>Tip</th>
-					<th>lokacija</th>
-					<th>Prosek</th>
-					
-				</tr>
-			</thead>
-
-			
-				<tr v-for="f in facilities">
-					<td>{{f.name }}</td>
-					<td>{{f.facilityType}}</td>
-					<td>{{f.location }}</td>
-					<td>{{f.averageRating}}</td>
-				</tr>
-			
-		</table>
-
-
+<div id="facilities">
+		<router-view></router-view>
+</div>
 
 	<script src="js/vue.js"></script>
 	<script src="js/axios.js"></script>
 	<script src="app/app.js"></script>
+	<script src="app/sportFacility.js"></script>
+
 </body>
 </html>

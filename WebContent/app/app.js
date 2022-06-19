@@ -1,6 +1,6 @@
 const Login = { template: '<login></login>' }
 const Registration = { template: '<registration></registration>' }
-const SportFasility ={template: '<sportFacility></sportFacility>'}
+const SportFasility = {template: '<sportFacility></sportFacility>'}
 
 
 const router = new VueRouter({
