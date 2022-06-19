@@ -127,7 +127,19 @@ public class CustomerDAO {
 	      }
 		 
 		 return newCustomer;
+ 
 	}
+	
+	public Customer login(Customer customer) {
+		 if(!customers.containsKey(customer.getUsername()))
+			 return null;
+		 
+		 if(customers.get(customer.getUsername()).getPassword().equals(customer.getPassword()))
+			 return customers.get(customer.getUsername());
+		 
+		 return null;
+		 
+	 }
 	
 
 	

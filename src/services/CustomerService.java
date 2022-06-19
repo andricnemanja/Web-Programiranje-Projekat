@@ -58,4 +58,13 @@ public class CustomerService {
 		return dao.saveCustomer(customer);
 	}
 	
+	@POST
+	@Path("/login")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Customer login(Customer customer) {
+		CustomerDAO dao = (CustomerDAO) ctx.getAttribute("customerDAO");
+		return dao.login(customer);
+	}
+	
 }
