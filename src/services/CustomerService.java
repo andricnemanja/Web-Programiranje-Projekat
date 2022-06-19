@@ -50,7 +50,7 @@ public class CustomerService {
 	}
 	
 	@POST
-	@Path("/")
+	@Path("/register")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Customer newCustomer(Customer customer) {

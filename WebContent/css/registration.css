@@ -40,7 +40,7 @@ body{
     margin-top: 20px;
 }
 
-.registration-box input[type="submit"]{
+.registration-box button{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     width: 200px;
     height: 40px;

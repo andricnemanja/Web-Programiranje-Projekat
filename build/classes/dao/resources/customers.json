@@ -1,0 +1,12 @@
+[
+    {
+        "customer":{
+            "firstName": "Petar",
+            "lastName": "Petrovic",
+            "email": "ppetrovic@gmail.com",
+            "username": "ppera",
+            "password": "12345",
+            "dateOfBirth": "1655567886041"
+        }
+    }
+]
