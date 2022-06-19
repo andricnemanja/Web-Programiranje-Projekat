@@ -1,6 +1,10 @@
 [{
 	"name": "Bazen",
 	"facilityType": "POOL",
-	"location" : "12.12, 13.12, 'Malinska', 23, 2100",
-	"averageRating": "4.96"
+	"longitude": 12.2,
+	"latitude": 13.12,
+	"street":"Bulevar Oslobodjenja",
+	"streetNumber":"23",
+	"postCode": "21000",
+	"averageRating": 4.96
 }]

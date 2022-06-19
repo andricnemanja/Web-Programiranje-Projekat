@@ -17,7 +17,6 @@ import beans.SportFacility.FacilityType;
 
 public class SportFacilityDAO {
 
-
 	private HashMap<String, SportFacility> facilities = new HashMap<String, SportFacility>();
 	private String contextPath;
 	
@@ -63,16 +62,21 @@ public class SportFacilityDAO {
 	}
 	
 	private void parseJSONObject(JSONObject customerJSONObject) {
+		
 		String name = (String) customerJSONObject.get("name");
-		FacilityType facilityType = (FacilityType) customerJSONObject.get("facilityType");
-		Location location = (Location) customerJSONObject.get("location");	
+		FacilityType facilityType = FacilityType.valueOf((String) customerJSONObject.get("facilityType"));
+		double longtitude = (Double) customerJSONObject.get("longitude");
+		double latitude = (Double) customerJSONObject.get("latitude");	
+		String streetName = (String) customerJSONObject.get("street");
+		String streetNumber = (String) customerJSONObject.get("streetNumber");
+		String postCode = (String) customerJSONObject.get("postCode");
 		Double averageRating = (Double) customerJSONObject.get("averageRating");	
+		
+		Location newLocation = new Location(longtitude, latitude, streetName, streetNumber, postCode);
 		 
 		
-		SportFacility newFacility = new SportFacility(name,facilityType,location,averageRating);
-		//provera da li moze put ime pa onda novi objekat
-		//i da li nam treba ovde put ako mi samo bukvalno iscitavamo iz fajla??
-		
+		SportFacility newFacility = new SportFacility(name, facilityType, newLocation, averageRating);
+
 		
 		facilities.put(name, newFacility);
 
