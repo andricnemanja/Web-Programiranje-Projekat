@@ -1,10 +1,73 @@
 [{
-	"name": "Bazen",
-	"facilityType": "POOL",
+	"name": "Exe Gym",
+	"facilityType": "GYM",
 	"longitude": 12.2,
 	"latitude": 13.12,
 	"street":"Bulevar Oslobodjenja",
 	"streetNumber":"23",
 	"postCode": "21000",
-	"averageRating": 4.96
-}]
+	"city": "Novi Sad",
+	"averageRating": 8.5,
+	"imageName":"exeGym.png"
+},
+{
+	"name": "Mega Gym",
+	"facilityType": "GYM",
+	"longitude": 12.2,
+	"latitude": 13.12,
+	"street":"Temerinska",
+	"streetNumber":"55",
+	"postCode": "21000",
+	"city": "Novi Sad",
+	"averageRating": 9.4,
+	"imageName":"megaGym.png"
+},
+{
+	"name": "H2O Gym",
+	"facilityType": "GYM",
+	"longitude": 12.2,
+	"latitude": 13.12,
+	"street":"Futoska",
+	"streetNumber":"12",
+	"postCode": "21000",
+	"city": "Novi Sad",
+	"averageRating": 9.2,
+	"imageName":"h2oGym.png"
+},
+{
+	"name": "Spens",
+	"facilityType": "POOL",
+	"longitude": 12.2,
+	"latitude": 13.12,
+	"street":"Sutjeska",
+	"streetNumber":"2",
+	"postCode": "21000",
+	"city": "Novi Sad",
+	"averageRating": 9.4,
+	"imageName":"spens.png"
+},
+{
+	"name": "Classic Gym",
+	"facilityType": "GYM",
+	"longitude": 12.2,
+	"latitude": 13.12,
+	"street":"Kopernikova",
+	"streetNumber":"39",
+	"postCode": "21000",
+	"city": "Novi Sad",
+	"averageRating": 9.4,
+	"imageName":"classicGym.png"
+},
+{
+	"name": "Sajmiste",
+	"facilityType": "POOL",
+	"longitude": 12.2,
+	"latitude": 13.12,
+	"street":"Novosadskog sajma",
+	"streetNumber":"37",
+	"postCode": "21000",
+	"city": "Novi Sad",
+	"averageRating": 9.4,
+	"imageName":"sajmiste.png"
+}
+]

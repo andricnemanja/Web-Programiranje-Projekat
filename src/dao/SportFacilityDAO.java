@@ -70,12 +70,15 @@ public class SportFacilityDAO {
 		String streetName = (String) customerJSONObject.get("street");
 		String streetNumber = (String) customerJSONObject.get("streetNumber");
 		String postCode = (String) customerJSONObject.get("postCode");
+		String city = (String) customerJSONObject.get("city");
 		Double averageRating = (Double) customerJSONObject.get("averageRating");	
+		String imageName = (String) customerJSONObject.get("imageName");
+
 		
-		Location newLocation = new Location(longtitude, latitude, streetName, streetNumber, postCode);
+		Location newLocation = new Location(longtitude, latitude, streetName, streetNumber, postCode, city);
 		 
 		
-		SportFacility newFacility = new SportFacility(name, facilityType, newLocation, averageRating);
+		SportFacility newFacility = new SportFacility(name, facilityType, newLocation, averageRating, imageName);
 
 		
 		facilities.put(name, newFacility);

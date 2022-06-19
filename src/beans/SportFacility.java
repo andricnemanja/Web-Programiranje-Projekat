@@ -6,8 +6,8 @@ public class SportFacility {
 	private FacilityType facilityType;
 	private Location location;
 	private double averageRating;
+	private String imageName;
 	//radno vreme
-	//slika - logo
 	
 	
 	
@@ -29,12 +29,13 @@ public class SportFacility {
 		// TODO Auto-generated constructor stub
 	}
 
-	public SportFacility(String name, FacilityType facilityType, Location location, double averageRating) {
+	public SportFacility(String name, FacilityType facilityType, Location location, double averageRating, String imageName) {
 		super();
 		this.name = name;
 		this.facilityType = facilityType;
 		this.location = location;
 		this.averageRating = averageRating;
+		this.imageName = imageName;
 	}
 
 	public String getName() {
@@ -67,6 +68,14 @@ public class SportFacility {
 
 	public void setAverageRating(double averageRating) {
 		this.averageRating = averageRating;
+	}
+
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
 	}
 	
 	

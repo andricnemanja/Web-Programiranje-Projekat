@@ -6,6 +6,7 @@ public class Location {
 	private String streetName;
 	private String houseNumber;
 	private String postCode;
+	private String city;
 	
 	
 	public Location() {
@@ -13,13 +14,14 @@ public class Location {
 	}
 
 
-	public Location(double longitude, double latitude, String streetName, String houseNumber, String postCode) {
+	public Location(double longitude, double latitude, String streetName, String houseNumber, String postCode, String city) {
 		super();
 		this.longitude = longitude;
 		this.latitude = latitude;
 		this.streetName = streetName;
 		this.houseNumber = houseNumber;
 		this.postCode = postCode;
+		this.city = city;
 	}
 
 
@@ -70,6 +72,16 @@ public class Location {
 
 	public void setPostCode(String postCode) {
 		this.postCode = postCode;
+	}
+
+
+	public String getCity() {
+		return city;
+	}
+
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 	
 	

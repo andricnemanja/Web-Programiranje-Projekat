@@ -1,0 +1,62 @@
+body{
+    background: #cccccc
+}
+
+.sport-facilities-wrapper{
+    width: 50%;
+    height: 95%;
+    position: absolute;
+    margin: 10px;
+    background-color: whitesmoke;
+    text-align: center;
+    overflow: auto;
+
+}
+
+.one-sport-facility{
+    width: 40%;
+    height: 350px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    margin: 15px;
+    float: left;
+
+}
+
+.sport-facilities-wrapper img{
+    margin-top: 10px;
+    width: 150px;
+    height: 150px;
+}
+
+.sport-facilities-wrapper hr{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.sport-facilities-wrapper p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 13px;
+
+}
+
+.sport-facilities-wrapper h4{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+.sport-facilities-wrapper .average-rating{
+    font-weight: bold;
+}
+
+.sport-facilities-wrapper .facility-address{
+    color: gray;
+}
+
+.sport-facilities-wrapper .rating{
+    background-color: #E592A4;
+    border-radius: 5px;
+    width: 15px;
+    height: 10px;
+    padding: 2px;
+
+}
