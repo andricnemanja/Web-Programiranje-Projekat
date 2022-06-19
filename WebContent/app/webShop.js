@@ -1,4 +1,4 @@
-Vue.component("web-shop", {
+/*Vue.component("web-shop", {
 	data: function () {
 		    return {
 		      products: null
@@ -42,4 +42,4 @@ Vue.component("web-shop", {
           .get('rest/proizvodi/getJustProducts')
           .then(response => (this.products = response.data))
     },
-});
+});*/
