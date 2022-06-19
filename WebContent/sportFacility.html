@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div id ="facilities">
+		<h3>{{title}}</h3>
+
+		<table border="1" id="tabela">
+			<thead>
+				<tr bgcolor="lightgrey">
+					<th>Naziv</th>
+					<th>Tip</th>
+					<th>lokacija</th>
+					<th>Prosek</th>
+					
+				</tr>
+			</thead>
+
+			
+				<tr v-for="f in facilities">
+					<td>{{f.name }}</td>
+					<td>{{f.facilityType}}</td>
+					<td>{{f.location }}</td>
+					<td>{{f.averageRating}}</td>
+				</tr>
+			
+		</table>
+
+
+
+	<script src="js/vue.js"></script>
+	<script src="js/axios.js"></script>
+	<script src="app/app.js"></script>
+</body>
+</html>
