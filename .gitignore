@@ -37,3 +37,6 @@ hs_err_pid*
 .classpath
 .settings/org.eclipse.jdt.core.prefs
 .settings/org.eclipse.wst.common.project.facet.core.xml
+.classpath
+.settings/org.eclipse.wst.common.project.facet.core.xml
+.settings/org.eclipse.wst.common.project.facet.core.xml
