@@ -56,6 +56,9 @@ public class SportFacilityDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+        
+       
+        
 			
 	}
 	
@@ -69,6 +72,7 @@ public class SportFacilityDAO {
 		SportFacility newFacility = new SportFacility(name,facilityType,location,averageRating);
 		//provera da li moze put ime pa onda novi objekat
 		//i da li nam treba ovde put ako mi samo bukvalno iscitavamo iz fajla??
+		
 		
 		facilities.put(name, newFacility);
 

@@ -1,11 +1,15 @@
-var app = new Vue({
-	el: '#facilities',
-	data: {
-		facilities: null,
-		
+Vue.component("sportFacility", {
+	data: function () {
+		    return {
+		      facilities: {},
+		      name: "",
+		      facilityType: "",
+		      location: "",
+		      averageRating: 5
+		    }
 	},
 	 template: ` 
-    	<div>
+    	<div class="sportFasility view">
     		<h3>Prikaz sportskih objekata</h3>
     		<table border="1">
 	    		<tr bgcolor="lightgrey">
@@ -15,19 +19,17 @@ var app = new Vue({
 	    			<th>Presek</th>
 	    		</tr>
 	    			
-	    		<tr v-for="f in facilities">
-	    			<td>{{f.name}}</td>
-	    			<td>{{f.facilityType}}</td>
-	    			<td>{{f.location}}</td>
-	    			<td>{{f.averageRating}}</td>
+	    		
 	    			
 	    	</table>
     	</div>		  
     	`,
 	mounted() {
 		axios.get('rest/facilities/')
-			.then(response => (this.facilities = response.data))
+			.then(response => (this.facilities = response.data, console.log(response)))
+		    
 	},
+	
 	methods: {
 	
 	

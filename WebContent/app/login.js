@@ -42,11 +42,11 @@ Vue.component("login", {
 	},
 	mounted () {
 		document.body.style.background = "url(\"images/Background.jpg\")"
-        axios
+      /*  axios
           .get('rest/proizvodi/getJustSc')
           .then(response => (this.sc = response.data));
         axios
         .get('rest/proizvodi/getTotal')
-        .then(response => (this.total = response.data));
+        .then(response => (this.total = response.data));*/
     }
 });
