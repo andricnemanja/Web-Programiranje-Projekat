@@ -27,13 +27,15 @@ Vue.component("login", {
 						this.newCustomer.password = null;
 					}
 					else{
-						window.location.href = "#/registration";
+						window.location.href = "#/sportFacility";
 					}
 
 				})
 		} 
 	},
 	mounted () {
-		document.body.style.background = "url(\"images/Background.jpg\")"
+		document.body.style.background = "url(\"images/Background.jpg\")";
+		document.body.style.backgroundSize = "cover";
+
     }
 });

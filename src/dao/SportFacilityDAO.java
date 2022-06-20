@@ -3,6 +3,7 @@ package dao;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
@@ -84,6 +85,46 @@ public class SportFacilityDAO {
 		facilities.put(name, newFacility);
 
 
+	}
+
+	public Collection<SportFacility> search(String search) {
+		ArrayList<SportFacility> list = new ArrayList<SportFacility>();
+		for(SportFacility sportFacility : facilities.values()) {
+			if(sportFacility.getName().toLowerCase().contains(search.toLowerCase())) {
+				list.add(sportFacility);
+			}
+		}
+		return list;
+	}
+
+	public Collection<SportFacility> searchCity(String search) {
+		ArrayList<SportFacility> list = new ArrayList<SportFacility>();
+		for(SportFacility sportFacility : facilities.values()) {
+			if(sportFacility.getLocation().getCity().equals(search)) {
+				list.add(sportFacility);
+			}
+		}
+		return list;
+	}
+
+	public Collection<SportFacility> searchType(String search) {
+		ArrayList<SportFacility> list = new ArrayList<SportFacility>();
+		for(SportFacility sportFacility : facilities.values()) {
+			if(sportFacility.getFacilityType().toString().equals(search)) {
+				list.add(sportFacility);
+			}
+		}
+		return list;
+	}
+
+	public Collection<SportFacility> searchRating(String search) {
+		ArrayList<SportFacility> list = new ArrayList<SportFacility>();
+		for(SportFacility sportFacility : facilities.values()) {
+			if(sportFacility.getAverageRating() >= Double.parseDouble(search)) {
+				list.add(sportFacility);
+			}
+		}
+		return list;
 	}
 
 

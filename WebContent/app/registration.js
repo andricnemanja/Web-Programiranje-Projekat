@@ -20,8 +20,6 @@ Vue.component("registration", {
 		<input type="password" v-model="newCustomer.password" name="password" placeholder="Lozinka">
 		<button v-on:click = "saveCustomer()">Registruj se</button>
 
-		<p id="error" hidden="true"></p>
-		<p id="success" hidden="true"></p>
 </div>	  
 `
 	, 
@@ -29,10 +27,12 @@ Vue.component("registration", {
 		saveCustomer : function () {
 			axios
 			.post('rest/customers/register', this.newCustomer)
-			.then(response => (toast('Product ' + product.name + " added to the Shopping Cart")))
+			.then(response => (toast('Product ' + product.name + " added to the Shopping Cart")));
+			window.location.href = "#/sportFacility";
 		}
 	},
 	mounted () {
-		document.body.style.background = "url(\"images/RegistrationBackground.jpg\")"
+		document.body.style.background = "url(\"images/RegistrationBackground.jpg\")";
+		document.body.style.backgroundSize = "cover";
     },
 });
