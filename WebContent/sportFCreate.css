@@ -1,0 +1,45 @@
+.div-for-create{
+    background-color: white;
+    width: 300px;
+    height: 520px;
+    text-align: center;
+    margin: auto;
+    padding: 30px;
+    margin-top: 20px;
+    box-shadow: 5px 5px grey;
+    border-right: lightblue 2px;
+    border-bottom: lightblue 2px;
+
+}
+body{
+    background-repeat: no-repeat;
+    background: url('images/spens.jpg');
+}
+.input
+{
+    width: 200px;
+    height: 25px;
+    border-bottom: 2px solid lightblue;
+    border-top: 1px solid lightblue;
+    border-color: rgb(96, 164, 187);
+
+}
+.button{
+    width: 200px;
+    height: 40px;
+    background-color: rgb(169, 213, 228);
+    font-style:inherit;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+    font-weight: bold;
+    border-color: lightblue;
+    color: rgb(75, 70, 70);
+    
+    
+    
+}
+p{
+    font-weight: bolder;
+    font-style: italic;
+    color: lightblue;
+}

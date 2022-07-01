@@ -2,6 +2,7 @@ package dao;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -12,6 +13,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import beans.Customer;
 import beans.Location;
 import beans.SportFacility;
 import beans.SportFacility.FacilityType;
@@ -62,18 +64,18 @@ public class SportFacilityDAO {
 			
 	}
 	
-	private void parseJSONObject(JSONObject customerJSONObject) {
+	private void parseJSONObject(JSONObject facilityJSONObject) {
 		
-		String name = (String) customerJSONObject.get("name");
-		FacilityType facilityType = FacilityType.valueOf((String) customerJSONObject.get("facilityType"));
-		double longtitude = (Double) customerJSONObject.get("longitude");
-		double latitude = (Double) customerJSONObject.get("latitude");	
-		String streetName = (String) customerJSONObject.get("street");
-		String streetNumber = (String) customerJSONObject.get("streetNumber");
-		String postCode = (String) customerJSONObject.get("postCode");
-		String city = (String) customerJSONObject.get("city");
-		Double averageRating = (Double) customerJSONObject.get("averageRating");	
-		String imageName = (String) customerJSONObject.get("imageName");
+		String name = (String) facilityJSONObject.get("name");
+		FacilityType facilityType = FacilityType.valueOf((String) facilityJSONObject.get("facilityType"));
+		double longtitude = (Double) facilityJSONObject.get("longitude");
+		double latitude = (Double) facilityJSONObject.get("latitude");	
+		String streetName = (String) facilityJSONObject.get("street");
+		String streetNumber = (String) facilityJSONObject.get("streetNumber");
+		String postCode = (String) facilityJSONObject.get("postCode");
+		String city = (String) facilityJSONObject.get("city");
+		Double averageRating = (Double) facilityJSONObject.get("averageRating");	
+		String imageName = (String) facilityJSONObject.get("imageName");
 
 		
 		Location newLocation = new Location(longtitude, latitude, streetName, streetNumber, postCode, city);
@@ -85,6 +87,43 @@ public class SportFacilityDAO {
 		facilities.put(name, newFacility);
 
 
+	}
+	
+	public SportFacility saveFacility(SportFacility newFacility) {
+		JSONObject facilityJSONObject = new JSONObject();
+		JSONArray facilityJSONArray = new JSONArray();
+
+		for(SportFacility sportFacility : facilities.values()) {
+			facilityJSONObject.put("name",sportFacility.getName());
+			facilityJSONObject.put("facilityType", sportFacility.getFacilityType());
+			facilityJSONObject.put("location", sportFacility.getLocation());
+			//za dodavanje loga
+			facilityJSONObject.put("imageName",sportFacility.getImageName());
+			
+			facilityJSONArray.add(facilityJSONObject);
+			facilityJSONObject = new JSONObject();
+		}
+		facilityJSONObject.put("name",newFacility.getName());
+		facilityJSONObject.put("facilityType", newFacility.getFacilityType());
+		facilityJSONObject.put("location", newFacility.getLocation());
+		//za dodavanje loga
+		facilityJSONObject.put("imageName",newFacility.getImageName());
+
+		facilityJSONArray.add(facilityJSONObject);
+		facilities.put(newFacility.getName(), newFacility);
+
+		
+		 try {
+	         FileWriter file = new FileWriter(contextPath + "/facilities.json");
+	         file.write(facilityJSONArray.toJSONString());
+	         file.close();
+	      } catch (IOException e) {
+	         e.printStackTrace();
+	         return null;
+	      }
+		 
+		 return newFacility;
+ 
 	}
 
 	public Collection<SportFacility> search(String search) {
