@@ -12,7 +12,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import beans.Customer;
 import beans.User;
+import dao.CustomerDAO;
 import dao.UserDAO;
 
 @Path("")
@@ -21,18 +23,18 @@ public class LoginService {
 	@Context
 	ServletContext ctx;
 	
+	@Context
+	HttpServletRequest request;
+	
 	public LoginService() {
 		
 	}
 	
 	@PostConstruct
-	// ctx polje je null u konstruktoru, mora se pozvati nakon konstruktora (@PostConstruct anotacija)
 	public void init() {
-		// Ovaj objekat se instancira vi�e puta u toku rada aplikacije
-		// Inicijalizacija treba da se obavi samo jednom
-		if (ctx.getAttribute("userDAO") == null) {
+		if (ctx.getAttribute("customerDAO") == null) {
 	    	String contextPath = ctx.getRealPath("");
-			ctx.setAttribute("userDAO", new UserDAO(contextPath));
+			ctx.setAttribute("customerDAO", new CustomerDAO(contextPath));
 		}
 	}
 	
@@ -40,14 +42,16 @@ public class LoginService {
 	@Path("/login")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response login(User user, @Context HttpServletRequest request) {
-		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
-		User loggedUser = userDao.find(user.getUsername(), user.getPassword());
-		if (loggedUser == null) {
-			return Response.status(400).entity("Invalid username and/or password").build();
+	public User login(User user) {
+		CustomerDAO dao = (CustomerDAO) ctx.getAttribute("customerDAO");
+		User loggedUser = dao.login(user);
+		if(loggedUser != null) {
+			request.getSession().setAttribute("user", loggedUser);
+			return loggedUser;
 		}
-		request.getSession().setAttribute("user", loggedUser);
-		return Response.status(200).build();
+		
+		return null;
+
 	}
 	
 	

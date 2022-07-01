@@ -20,15 +20,18 @@ Vue.component("login", {
 	methods : {
 		login : function() {
 			axios
-				.post('rest/customers/login', this.newCustomer)
+				.post('rest/login', this.newCustomer)
 				.then(response => {
 					if(!response.data){
 						this.error = true;
 						this.newCustomer.password = null;
+						return;
 					}
-					else{
+					this.newCustomer = response.data;
+					if(this.newCustomer.userType == "CUSTOMER"){
 						window.location.href = "#/sportFacility";
 					}
+					
 
 				})
 		} 

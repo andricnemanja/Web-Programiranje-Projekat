@@ -14,6 +14,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import beans.Customer;
+import beans.User;
 import beans.User.Gender;
 
 public class CustomerDAO {
@@ -130,7 +131,7 @@ public class CustomerDAO {
  
 	}
 	
-	public Customer login(Customer customer) {
+	public Customer login(User customer) {
 		 if(!customers.containsKey(customer.getUsername()))
 			 return null;
 		 
