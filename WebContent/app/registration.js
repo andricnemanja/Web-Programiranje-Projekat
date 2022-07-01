@@ -1,7 +1,15 @@
 Vue.component("registration", {
 	data: function () {
 		    return {
-		      newCustomer:{firstName: null, lastName:null, username:null, gender:null, dateOfBirth:null, email:null, password:null}
+		      newCustomer:{
+			  firstName: null, 
+			  lastName:null,
+			  username:null,
+			  gender:null, 
+			  dateOfBirth:null,
+			  email:null,
+			  password:null},
+		     
 		    }
 	},
 	template: ` 
@@ -19,16 +27,20 @@ Vue.component("registration", {
 		<input type="email" v-model="newCustomer.email" name="email" placeholder="E-mail">
 		<input type="password" v-model="newCustomer.password" name="password" placeholder="Lozinka">
 		<button v-on:click = "saveCustomer()">Registruj se</button>
-
+        
 </div>	  
 `
 	, 
 	methods : {
+	
 		saveCustomer : function () {
+					
 			axios
 			.post('rest/customers/register', this.newCustomer)
 			.then(response => (toast('Product ' + product.name + " added to the Shopping Cart")));
-			window.location.href = "#/sportFacility";
+			window.location.href = "#/sportFacility";	
+					
+			
 		}
 	},
 	mounted () {
