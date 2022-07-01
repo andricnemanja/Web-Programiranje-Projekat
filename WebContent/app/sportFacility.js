@@ -35,7 +35,7 @@ Vue.component("sportFacility", {
 			<option value="POOL">Bazeni</option>
 		</select>
 
-		<div class="one-sport-facility" v-for="f in facilities">
+		<div class="one-sport-facility" v-for="f in facilities" v-on:click="showSelectedFacility(f)">
 			<img class="facility-image" v-bind:src="f.imageName"></img>
 			<p class="average-rating">{{f.averageRating}}</p>			
 			<h4 class="facility-name">{{f.name}}</h4>
@@ -94,7 +94,10 @@ Vue.component("sportFacility", {
 				axios.get('rest/facilities/rating/' + this.ratingOption)
 					.then(response => (this.facilities = response.data));
 			}
-		} 
+		},
+		showSelectedFacility : function(selectedFacility){
+			this.$router.push({ name: "oneSportFacility", params: {selectedFacility : selectedFacility}});
+		}
 	
 	},
 	mounted() {

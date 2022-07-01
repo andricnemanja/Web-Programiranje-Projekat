@@ -1,0 +1,66 @@
+.selected-sport-facility{
+    background-color: #cccccc;
+    height: 100%;
+}
+
+.selected-sport-facility .map-div{
+    background-color: greenyellow;
+    z-index: 1;
+}
+
+.selected-sport-facility .facility-div{
+    background-color: white;
+    padding: 50px;
+    box-shadow: 5px 0px 7px #888888;
+    z-index: 2;
+}
+
+
+.selected-sport-facility .facility-row{
+    height: auto;
+}
+
+.selected-sport-facility .facility-name{
+    font-size: 34px;
+}
+
+.selected-sport-facility .facility-image{
+    width: 300px;
+    height: 300px;
+}
+
+.selected-sport-facility .facility-address{
+    margin-top: 20px;
+    font-size: 18px;
+    color: gray;
+}
+
+.selected-sport-facility .facility-type{
+    margin-top: 20px;
+    font-size: 18px;
+    color: gray;
+}
+
+.selected-sport-facility .comment-div{
+    height: 150px;
+    margin: 30px;
+}
+
+.selected-sport-facility .comment-div img{
+    width: 100px;
+    margin-top:-20px;
+    margin-bottom: 10px;
+}
+
+.selected-sport-facility .facility-div h3{
+    margin-top: 50px;
+}
+
+.selected-sport-facility .facility-div .average-rating{
+    font-size: 16px;
+}
+
+
+.selected-sport-facility .facility-div .average-rating img{
+    width: 20px;
+}

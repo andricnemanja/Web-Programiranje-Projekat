@@ -1,6 +1,7 @@
 const Login = { template: '<login></login>' }
 const Registration = { template: '<registration></registration>' }
 const SportFacility = {template: '<sportFacility></sportFacility>'}
+const OneSportFacility = {template: '<oneSportFacility></oneSportFacility>'}
 
 
 const router = new VueRouter({
@@ -8,7 +9,8 @@ const router = new VueRouter({
 	  routes: [
 		{ path: '/', component: Login},
 	    { path: '/registration', component: Registration},
-	    { path: '/sportFacility', component : SportFacility}
+	    { path: '/sportFacility', component : SportFacility},
+	    { path: '/oneSportFacility', name:"oneSportFacility", component: OneSportFacility}
 	  ]
 });
 

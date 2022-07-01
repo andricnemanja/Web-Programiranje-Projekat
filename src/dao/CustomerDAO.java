@@ -141,6 +141,10 @@ public class CustomerDAO {
 		 
 	 }
 	
+	public Customer getCustomer(String username){
+		 return customers.get(username);
+	}
+	
 
 	
 

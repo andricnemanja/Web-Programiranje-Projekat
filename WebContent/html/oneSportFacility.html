@@ -1,0 +1,41 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="/css/oneSportFacility.css">
+	<script src="jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+	<script src="login.js"></script>
+	<title>Objekat</title>
+</head>
+<body>
+	<div class="container-fluid selected-sport-facility">
+		<div class="row justify-content-center facility-row">
+			<div class="col text-center facility-div">
+				<img class="facility-image" v-bind:src="selectedFacility.imageName"></img>
+				
+				<p class="average-rating"><img src="/images/stars/oneStar.png"/>{{selectedFacility.averageRating}}</p>
+				<h4 class="facility-name">{{selectedFacility.name}}</h4>
+				<p class="facility-address">{{selectedFacility.location.streetName}} {{selectedFacility.location.houseNumber}}, {{selectedFacility.location.city}}</p>
+				<hr>
+				<p class="facility-type">{{selectedFacility.facilityType}}</p>
+
+				<h3>Šta korisnici kažu o ovom objektu:</h3>
+
+				<div class="row justify-content-center">
+					<div class="col-3 text-center comment-div" v-for="com in comments">
+						<p>{{com.customer.firstName}} {{com.customer.lastName}}</p>
+						<img v-bind:src="'/images/stars/' + com.rating + '.png'" />
+						<p>{{com.comment}}</p>
+					</div>
+				</div>
+
+
+			</div>
+			<div class="col map-div">
+
+			</div>	
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+[{
+	"id": "100",
+	"customerUsername": "ppera",
+	"sportFacilityName": "H2O Gym",
+	"comment": "Teretana je odlicna, ima veliki broj masina i puno mesta. Osoblje je veoma ljubazno.",
+	"rating": "5"
+},
+{
+	"id": "101",
+	"customerUsername": "ppera",
+	"sportFacilityName": "H2O Gym",
+	"comment": "Teretana je odlicno opremljena i super je ambijent. Jedina zamerka sto je malo zagusljivo",
+	"rating": "4"
+},
+{
+	"id": "102",
+	"customerUsername": "ppera",
+	"sportFacilityName": "H2O Gym",
+	"comment": "Super objekat, veliki minus sa moje strane kada mi neko kaze imamo dzak (boks) ali nije u funkciji. To znaci da nemate...",
+	"rating": "3"
+},
+{
+	"id": "103",
+	"customerUsername": "ppera",
+	"sportFacilityName": "H2O Gym",
+	"comment": "Higijena u svlacionici moze biti mnogo bolja. Mnostvo sprava, nazalost izgleda da neke od njih nisu u funkciji.",
+	"rating": "2"
+},
+{
+	"id": "104",
+	"customerUsername": "ppera",
+	"sportFacilityName": "H2O Gym",
+	"comment": "Ocajna teretana",
+	"rating": "1"
+}
+]

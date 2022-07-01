@@ -13,13 +13,17 @@ body{
 
 }
 
-.one-sport-facility{
+.sport-facilities-wrapper .one-sport-facility{
     width: 40%;
     height: 350px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     margin: 15px;
     float: left;
 
+}
+
+.sport-facilities-wrapper .one-sport-facility :hover{
+    cursor: pointer;
 }
 
 .sport-facilities-wrapper img{

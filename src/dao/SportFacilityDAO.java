@@ -126,6 +126,10 @@ public class SportFacilityDAO {
 		}
 		return list;
 	}
+	
+	public SportFacility getSportFacility(String name) {
+		return facilities.get(name);
+	}
 
 
 }
