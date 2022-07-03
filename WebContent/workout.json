@@ -1,0 +1,10 @@
+[{
+	"id": "100",
+	"name": "Slobodan trening",
+	"workoutType": "PERSONAL",
+	"sportFacilityName": "H2O Gym",
+	"duration": 100.00,
+	"coachUsername": "trener123",
+	"description": "PPL trening",
+	"imageName": "trening.png"
+}]

@@ -1,28 +1,32 @@
 package beans;
 
 public class Workout {
+	private int id;
 	private String name;
 	private WorkoutType workoutType;
 	private SportFacility sportFacility;
 	private double duration;
 	private Coach coach;
 	private String description;
-	// image
+	private String imageName;
 	
 	public enum WorkoutType{
 		GROUP,
 		PERSONAL,
 		GYM
 	}
-	public Workout(String name, WorkoutType workoutType, SportFacility sportFacility, double duration, Coach coach,
-			String description) {
+	
+	public Workout(int id, String name, WorkoutType workoutType, SportFacility sportFacility, double duration,
+			Coach coach, String description, String imageName) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.workoutType = workoutType;
 		this.sportFacility = sportFacility;
 		this.duration = duration;
 		this.coach = coach;
 		this.description = description;
+		this.imageName = imageName;
 	}
 	
 	public String getName() {
@@ -60,6 +64,22 @@ public class Workout {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
 	}
 	
 	

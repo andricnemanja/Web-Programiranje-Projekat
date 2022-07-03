@@ -1,0 +1,15 @@
+[{
+	"id": "100",
+	"customerUsername": "ppera",
+	"coachUserName": "trener123",
+	"workoutID": "100",
+	"checkInDateTime": "16-07-2000 12:00"
+},
+{
+	"id": "101",
+	"customerUsername": "ppera",
+	"coachUserName": "trener123",
+	"workoutID": "100",
+	"checkInDateTime": "18-07-2000 15:00"
+}
+]

@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
@@ -80,10 +79,9 @@ public class CustomerDAO {
 		String username = (String) customerJSONObject.get("username");	
 		String password = (String) customerJSONObject.get("password");	
 		Gender gender = Gender.valueOf((String) customerJSONObject.get("gender"));
-		//String dateOfBirthString = (String) customerJSONObject.get("dateOfBirth");
+		String dateOfBirthString = (String) customerJSONObject.get("dateOfBirth");
 		
-		//LocalDate date = LocalDate.parse(dateOfBirthString);
-		Date date = new Date(2020, 10, 12, 10, 0, 0);
+		Date date = DateParser.parseDate(dateOfBirthString);
 		
 		Customer newCustomer = new Customer(firstName, lastName, email, username, password, gender, date);
 		customers.put(username, newCustomer);
@@ -102,7 +100,7 @@ public class CustomerDAO {
 			customerJSONObject.put("username",customer.getUsername());
 			customerJSONObject.put("password", customer.getPassword());
 			customerJSONObject.put("gender", customer.getGender().name());
-			customerJSONObject.put("dateOfBirth", customer.getDateOfBirth().toString());	
+			customerJSONObject.put("dateOfBirth", DateParser.makeDateString(customer.getDateOfBirth()));	
 			customerJSONArray.add(customerJSONObject);
 			customerJSONObject = new JSONObject();
 		}
@@ -112,7 +110,7 @@ public class CustomerDAO {
 		customerJSONObject.put("username",newCustomer.getUsername());
 		customerJSONObject.put("password", newCustomer.getPassword());
 		customerJSONObject.put("gender", newCustomer.getGender().name());
-		customerJSONObject.put("dateOfBirth", newCustomer.getDateOfBirth().toString());	
+		customerJSONObject.put("dateOfBirth", DateParser.makeDateString(newCustomer.getDateOfBirth()));	
 
 		customerJSONArray.add(customerJSONObject);
 		customers.put(newCustomer.getUsername(), newCustomer);
