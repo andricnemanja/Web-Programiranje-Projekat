@@ -28,9 +28,9 @@ Vue.component("login", {
 						return;
 					}
 					this.newCustomer = response.data;
-					if(this.newCustomer.userType == "CUSTOMER"){
-						window.location.href = "#/sportFacility";
-					}
+
+					window.location.href = "#/sportFacility";
+					
 					
 
 				})

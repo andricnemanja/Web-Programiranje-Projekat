@@ -3,7 +3,6 @@ Vue.component("sportFacility", {
 		    return {
 		      facilities: {},
 			  backupFacilities:{},
-			  cities:[],
 			  nameSearhField:"",
 			  citySearchOption:"",
 			  facilityTypeOption:"",
@@ -103,15 +102,6 @@ Vue.component("sportFacility", {
 	mounted() {
 		axios.get('rest/facilities/')
 			.then(response => (this.facilities = response.data, this.backupFacilities = response.data));
-
 		document.body.style.background = "#cccccc"
-
-		console.log(this.facilities);
-		for(let f in this.facilities){
-			this.cities.push(f.location.city);
-			console.log(f.location.city);
-		}
-
-		searhField="Mega";
 	}
 });

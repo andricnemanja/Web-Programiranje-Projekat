@@ -7,4 +7,15 @@
 	"coachUsername": "trener123",
 	"description": "PPL trening",
 	"imageName": "trening.png"
-}]
+},
+{
+	"id": "101",
+	"name": "Vodjeni trening",
+	"workoutType": "GROUP",
+	"sportFacilityName": "Mega Gym",
+	"duration": 120.00,
+	"coachUsername": "trener123",
+	"description": "PPL trening",
+	"imageName": "trening.png"
+}
+]

@@ -14,6 +14,7 @@ import javax.ws.rs.core.Response;
 
 import beans.Customer;
 import beans.User;
+import dao.CoachDAO;
 import dao.CustomerDAO;
 import dao.UserDAO;
 
@@ -36,6 +37,10 @@ public class LoginService {
 	    	String contextPath = ctx.getRealPath("");
 			ctx.setAttribute("customerDAO", new CustomerDAO(contextPath));
 		}
+		if (ctx.getAttribute("coachDAO") == null) {
+	    	String contextPath = ctx.getRealPath("");
+			ctx.setAttribute("coachDAO", new CoachDAO(contextPath));
+		}
 	}
 	
 	@POST
@@ -49,6 +54,15 @@ public class LoginService {
 			request.getSession().setAttribute("user", loggedUser);
 			return loggedUser;
 		}
+		
+		CoachDAO coachDAO = (CoachDAO) ctx.getAttribute("coachDAO");
+		
+		loggedUser = coachDAO.login(user);
+		if(loggedUser != null) {
+			request.getSession().setAttribute("user", loggedUser);
+			return loggedUser;
+		}
+		
 		
 		return null;
 

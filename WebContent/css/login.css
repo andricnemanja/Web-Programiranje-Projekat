@@ -1,9 +1,3 @@
-body{
-    background: url("images/background.jpg");
-    background-size: cover;
-    background-position: center;
-}
-
 .login-box{
     width: 330px;
     height: 380px;

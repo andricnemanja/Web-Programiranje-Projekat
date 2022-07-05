@@ -1,0 +1,69 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="/css/workoutHistory.css">
+	<script src="jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<title>Objekat</title>
+</head>
+<body>
+	<div class="container workout-history-wrapper">
+		<h3 class = "title">Vaši treninzi u prethodnih mesec dana:</h3>
+		<div class="customer-workouts" v-bind:hidden="currentUser.userType != 'CUSTOMER'">
+			<table class="table table-hover">
+				<thead>
+				<tr>	
+					<th>Naziv treninga</th>
+					<th>Objekat</th>
+					<th>Datum</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr v-for="workout in workoutHistory">
+					<td>{{workout.workout.name}}</td>
+					<td>{{workout.workout.sportFacility.name}}</td>
+					<td>{{workout.checkInDateTime | dateFormat('DD.MM.YYYY.')}}</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="coach-workouts" v-bind:hidden="currentUser.userType != 'COACH'">
+
+			<ul class="nav nav-pills">
+				<li class="nav-item">
+				  <a class="nav-link active" data-bs-toggle="pill" href="#group">Grupni</a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" data-bs-toggle="pill" href="#personal">Personalni</a>
+				</li>
+			</ul>
+			
+			<div class="tab-content">
+				<div class="tab-pane container active" id="group">
+					<table class="table table-hover">
+						<thead>
+						<tr>
+							<th>Naziv treninga</th>
+							<th>Objekat</th>
+							<th>Datum</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr v-for="workout in workoutHistoryGroup">
+							<td>{{workout.workout.name}}</td>
+							<td>{{workout.workout.sportFacility.name}}</td>
+							<td>{{workout.checkInDateTime | dateFormat('DD.MM.YYYY.')}}</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="tab-pane container fade" id="personal">...</div>
+			</div>
+		
+		</div>
+		
+	</div>
+</body>
+</html>

@@ -6,6 +6,8 @@ import java.util.HashMap;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import beans.Coach;
+import beans.Customer;
+import beans.User;
 import beans.User.Gender;
 import beans.User.UserType;
 
@@ -54,6 +56,18 @@ public class CoachDAO extends DAO {
 		coaches.put(username, coach);
 
 	}
+	
+	public Coach login(User coach) {
+		 if(!coaches.containsKey(coach.getUsername()))
+			 return null;
+		 
+		 if(coaches.get(coach.getUsername()).getPassword().equals(coach.getPassword()))
+			 return coaches.get(coach.getUsername());
+		 
+		 return null;
+		 
+	 }
+	
 	
 	public Coach getCoach(String username) {
 		return coaches.get(username);

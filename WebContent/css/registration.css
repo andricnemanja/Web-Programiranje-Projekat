@@ -1,9 +1,3 @@
-body{
-    background: url("images/RegistrationBackground.jpg");
-    background-size: cover;
-    background-position: center;
-}
-
 .registration-box{
     width: 400px;
     height: 650px;

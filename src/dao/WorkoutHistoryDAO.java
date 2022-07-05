@@ -9,6 +9,7 @@ import org.json.simple.JSONObject;
 import beans.Coach;
 import beans.Customer;
 import beans.Workout;
+import beans.Workout.WorkoutType;
 import beans.WorkoutHistory;
 
 public class WorkoutHistoryDAO extends DAO {
@@ -64,6 +65,18 @@ public class WorkoutHistoryDAO extends DAO {
 		
 		for(WorkoutHistory history : workoutHistory.values()) {
 			if(history.getCustomer().getUsername().equals(username) || history.getCoach().getUsername().equals(username)){
+				historyForUser.add(history);
+			}
+		}
+		return historyForUser;
+	}
+	
+	public Collection<WorkoutHistory> getCoachWorkoutHistory(String username, WorkoutType workoutType) {
+		
+		ArrayList<WorkoutHistory> historyForUser = new ArrayList<>();
+		
+		for(WorkoutHistory history : workoutHistory.values()) {
+			if(history.getCoach().getUsername().equals(username) && history.getWorkout().getWorkoutType() == workoutType){
 				historyForUser.add(history);
 			}
 		}

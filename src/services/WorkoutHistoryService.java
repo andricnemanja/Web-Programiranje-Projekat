@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -12,6 +13,8 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import beans.Comment;
+import beans.User;
+import beans.Workout.WorkoutType;
 import beans.WorkoutHistory;
 import dao.CoachDAO;
 import dao.CommentDAO;
@@ -25,6 +28,9 @@ public class WorkoutHistoryService {
 	
 	@Context
 	ServletContext ctx;
+	
+	@Context
+	HttpServletRequest request;
 	
 	public WorkoutHistoryService() {
 	}
@@ -58,20 +64,32 @@ public class WorkoutHistoryService {
 		}
 	}
 	
+	
 	@GET
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<Comment> getComments() {
-		CommentDAO dao = (CommentDAO) ctx.getAttribute("commentDAO");
-		return dao.getAll();
+	public Collection<WorkoutHistory> getWorkoutHistoryForUser() {
+		User user = (User) request.getSession().getAttribute("user");
+		WorkoutHistoryDAO dao = (WorkoutHistoryDAO) ctx.getAttribute("workoutHistoryDAO");
+		return dao.getWorkoutHistoryForUser(user.getUsername());
 	}
 	
 	@GET
-	@Path("/{username}")
+	@Path("/coachGroupWorkoutHistory")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<WorkoutHistory> getWorkoutHistoryForUser(@PathParam("username") String username) {
+	public Collection<WorkoutHistory> getCoachGroupWorkoutHistory() {
+		User user = (User) request.getSession().getAttribute("user");
 		WorkoutHistoryDAO dao = (WorkoutHistoryDAO) ctx.getAttribute("workoutHistoryDAO");
-		return dao.getWorkoutHistoryForUser(username);
+		return dao.getCoachWorkoutHistory(user.getUsername(), WorkoutType.GROUP);
+	}
+	
+	@GET
+	@Path("/coachPersonalWorkoutHistory")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<WorkoutHistory> getCoachPersonalWorkoutHistory() {
+		User user = (User) request.getSession().getAttribute("user");
+		WorkoutHistoryDAO dao = (WorkoutHistoryDAO) ctx.getAttribute("workoutHistoryDAO");
+		return dao.getCoachWorkoutHistory(user.getUsername(), WorkoutType.PERSONAL);
 	}
 	
 }

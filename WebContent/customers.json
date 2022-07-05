@@ -1,1 +1,4 @@
-[{"firstName": "Milos", "lastName": "Milosevic", "email": "ppetrovic@gmail.com", "username": "ppera", "password": "12345", "gender": "MALE", "dateOfBirth": "16-07-2000 00:00"}]
+[
+    {"firstName": "Milos", "lastName": "Milosevic", "email": "ppetrovic@gmail.com", "username": "milos", "password": "12345", "gender": "MALE", "dateOfBirth": "16-07-2000 00:00"},
+    {"firstName": "Jovan", "lastName": "Jovanovic", "email": "jovan@gmail.com", "username": "jovan", "password": "12345", "gender": "MALE", "dateOfBirth": "21-10-1995 00:00"}
+]
