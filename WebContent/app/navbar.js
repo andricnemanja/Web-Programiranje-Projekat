@@ -1,7 +1,7 @@
 Vue.component("navbar", {
 	data: function () {
 		    return {
-				user:{}
+				page:""
 		    }
 	},
 	 template: ` 
@@ -9,10 +9,10 @@ Vue.component("navbar", {
 		<div class="container-fluid">	  
 		  <ul class="navbar-nav me-auto">
 			<li class="nav-item">
-			  <a class="nav-link active" href="#/sportFacility">Objekti</a>
+			  <a v-bind:class="['nav-link', (page == '#/sportFacility' ? 'active' : '')]" href="#/sportFacility">Objekti</a>
 			</li>
 		   <li class="nav-item">
-			  <a class="nav-link" href="#">Treninzi</a>
+			  <a v-bind:class="['nav-link', (page == '#/workoutHistory' ? 'active' : '')]" href="#/workoutHistory">Treninzi</a>
 			</li>
 			<li class="nav-item">
 			  <a class="nav-link" href="#">Članarina</a>
@@ -36,7 +36,7 @@ Vue.component("navbar", {
 		}
 	},
 	mounted() {
-
+		page = window.location.hash;
 
 	}
 });
