@@ -4,7 +4,8 @@ Vue.component("workoutHistory", {
 				workoutHistory: {},
 				workoutHistoryGroup: {},
 				workoutHistoryPersonal: {},
-				currentUser: {}
+				currentUser: {},
+				todayDateInMiliseconds:null
 		    }
 	},
 	 template: ` 
@@ -66,6 +67,7 @@ Vue.component("workoutHistory", {
 						<th>Naziv treninga</th>
 						<th>Objekat</th>
 						<th>Datum</th>
+						<th></th>
 					</tr>
 					</thead>
 					<tbody>
@@ -73,6 +75,7 @@ Vue.component("workoutHistory", {
 						<td>{{workout.workout.name}}</td>
 						<td>{{workout.workout.sportFacility.name}}</td>
 						<td>{{workout.checkInDateTime | dateFormat('DD.MM.YYYY.')}}</td>
+						<td><button type="button" class="btn btn-outline-secondary" v-on:click="cancelWorkout(workout)" :disabled = "((workout.checkInDateTime - todayDateInMiliseconds) < 172800000) ? true : false">Otkaži</button></td>
 					</tr>
 					</tbody>
 				</table>
@@ -84,6 +87,9 @@ Vue.component("workoutHistory", {
     	`,
 	
 	methods: {
+		cancelWorkout : function(workout){
+			this.workoutHistoryPersonal.splice(this.workoutHistoryPersonal.findIndex(a => a.id === workout.id) , 1)
+		}
 	},
 	async mounted() {
 
@@ -102,6 +108,7 @@ Vue.component("workoutHistory", {
 				.then(response => this.workoutHistoryPersonal = response.data);
 		}		
 			
+		todayDateInMiliseconds = Date.now();
 		
 
 	},

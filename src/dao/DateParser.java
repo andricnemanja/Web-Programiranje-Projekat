@@ -11,7 +11,7 @@ public class DateParser {
 	
 		Date date = new Date();
 		try {
-			date = formatter.parse("16-07-2000 20:00");
+			date = formatter.parse(dateString);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

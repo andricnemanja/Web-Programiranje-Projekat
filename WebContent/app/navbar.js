@@ -5,7 +5,7 @@ Vue.component("navbar", {
 		    }
 	},
 	 template: ` 
-	 <nav class="navbar navbar-expand-sm navbar-dark  ">
+	 <nav class="navbar navbar-expand-sm navbar-dark">
 		<div class="container-fluid">	  
 		  <ul class="navbar-nav me-auto">
 			<li class="nav-item">
