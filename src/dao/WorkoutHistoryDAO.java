@@ -131,8 +131,27 @@ public class WorkoutHistoryDAO extends DAO {
  
 	}
 	
+	public void setDeletedFlag(int id) {
+        JSONArray workoutHistoryList = super.load(contextPath, "workoutHistory.json");    
+        for(Object obj : workoutHistoryList) {
+        	String readId = (String)((JSONObject)obj).get("id");
+        	if(readId.equals(String.valueOf(id))) {
+        		((JSONObject)obj).put("isDeleted", "true");
+        	}
+        }
+        
+        try {
+	         FileWriter file = new FileWriter(contextPath + "/workoutHistory.json");
+	         file.write(workoutHistoryList.toJSONString());
+	         file.close();
+	      } catch (IOException e) {
+	         e.printStackTrace();
+	         return;
+	      }
+	}
+	
 	public WorkoutHistory deleteWorkout(int id) {
-		saveWorkout(workoutHistory.get(id), true);
+		setDeletedFlag(id);
 		return workoutHistory.remove(id);
 	}
 	
