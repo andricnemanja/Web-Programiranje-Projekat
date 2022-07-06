@@ -88,7 +88,8 @@ Vue.component("workoutHistory", {
 	
 	methods: {
 		cancelWorkout : function(workout){
-			this.workoutHistoryPersonal.splice(this.workoutHistoryPersonal.findIndex(a => a.id === workout.id) , 1)
+			this.workoutHistoryPersonal.splice(this.workoutHistoryPersonal.findIndex(a => a.id === workout.id) , 1);
+			axios.get('rest/workoutHistory/deleteWorkout/' + workout.id);
 		}
 	},
 	async mounted() {

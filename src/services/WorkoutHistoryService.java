@@ -92,4 +92,12 @@ public class WorkoutHistoryService {
 		return dao.getCoachWorkoutHistory(user.getUsername(), WorkoutType.PERSONAL);
 	}
 	
+	@GET
+	@Path("/deleteWorkout/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public WorkoutHistory deletePersonalWorkout(@PathParam("id") int id) {
+		WorkoutHistoryDAO dao = (WorkoutHistoryDAO) ctx.getAttribute("workoutHistoryDAO");
+		return dao.deleteWorkout(id);
+	}
+	
 }

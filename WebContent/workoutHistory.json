@@ -3,41 +3,47 @@
 	"customerUsername": "milos",
 	"coachUserName": "trener123",
 	"workoutID": "100",
-	"checkInDateTime": "16-07-2022 12:00"
+	"checkInDateTime": "16-07-2022 12:00",
+	"isDeleted": "false"
 },
 {
 	"id": "101",
 	"customerUsername": "milos",
 	"coachUserName": "trener123",
 	"workoutID": "101",
-	"checkInDateTime": "18-07-2022 15:00"
+	"checkInDateTime": "18-07-2022 15:00",
+	"isDeleted": "false"
 },
 {
 	"id": "102",
 	"customerUsername": "jovan",
 	"coachUserName": "trener123",
 	"workoutID": "100",
-	"checkInDateTime": "18-07-2022 15:00"
+	"checkInDateTime": "18-07-2022 15:00",
+	"isDeleted": "false"
 },
 {
 	"id": "103",
 	"customerUsername": "jovan",
 	"coachUserName": "trener123",
 	"workoutID": "101",
-	"checkInDateTime": "20-07-2022 11:00"
+	"checkInDateTime": "20-07-2022 11:00",
+	"isDeleted": "false"
 },
 {
 	"id": "104",
 	"customerUsername": "milos",
 	"coachUserName": "trener123",
 	"workoutID": "100",
-	"checkInDateTime": "10-07-2022 11:00"
+	"checkInDateTime": "10-07-2022 11:00",
+	"isDeleted": "false"
 },
 {
 	"id": "105",
 	"customerUsername": "jovan",
 	"coachUserName": "trener123",
 	"workoutID": "100",
-	"checkInDateTime": "06-07-2022 11:00"
+	"checkInDateTime": "06-07-2022 11:00",
+	"isDeleted": "false"
 }
 ]
