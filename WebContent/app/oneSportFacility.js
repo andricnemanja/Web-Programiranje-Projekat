@@ -55,7 +55,7 @@ Vue.component("oneSportFacility", {
 		axios.get('rest/comments/' + this.selectedFacility.name)
 			.then(response => (this.comments = response.data));
 
-		document.body.style.background = "#cccccc"
+		document.body.style.background = "linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);"
 
 	}
 });

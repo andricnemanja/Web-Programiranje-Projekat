@@ -3,15 +3,18 @@ const Registration = { template: '<registration></registration>' }
 const SportFacility = {template: '<sportFacility></sportFacility>'}
 const OneSportFacility = {template: '<oneSportFacility></oneSportFacility>'}
 const WorkoutHistory = {template: '<workoutHistory></workoutHistory>'}
+const Membership = {template: '<membership></membership>'}
+
 
 const router = new VueRouter({
 	  mode: 'hash',
 	  routes: [
-		{ path: '/', component: Login},
-	    { path: '/registration', component: Registration},
+		{ path: '/', name:"login", component: Login},
+	    { path: '/registration', name:"registration", component: Registration},
 	    { path: '/sportFacility', component : SportFacility},
 	    { path: '/oneSportFacility', name:"oneSportFacility", component: OneSportFacility},
-	    { path: '/workoutHistory', name:"workoutHistory", component: WorkoutHistory}
+	    { path: '/workoutHistory', name:"workoutHistory", component: WorkoutHistory},
+	    { path: '/membership', name:"membership", component: Membership}
 
 	  ]
 });

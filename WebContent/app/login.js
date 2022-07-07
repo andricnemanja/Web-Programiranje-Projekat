@@ -40,5 +40,13 @@ Vue.component("login", {
 		document.body.style.background = "url(\"images/Background.jpg\")";
 		document.body.style.backgroundSize = "cover";
 
-    }
+    },
+	beforeCreate() {
+		this.$nextTick(() => {
+		  document.querySelector('body').style.background = "url(\"images/Background.jpg\")";
+		})
+	  },
+	beforeDestroy() {
+		document.querySelector('body').style.background = "";
+	}
 });

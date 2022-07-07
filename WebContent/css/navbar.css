@@ -1,5 +1,5 @@
 .navbar{
-    background: #E592A4;
+    background: #dd6982;
     font-size: 18px;
     z-index: 3;
 
@@ -7,6 +7,15 @@
 
 .navbar img{
     width: 150px;
-    
+    margin: 0px;
+    margin-bottom: 5px;
 }
 
+.navbar .nav-link{
+    color: white;
+}
+
+
+.navbar .nav-link .active{
+    color: white;
+}

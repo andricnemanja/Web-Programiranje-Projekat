@@ -35,4 +35,7 @@ Vue.component("registration", {
 		document.body.style.background = "url(\"images/RegistrationBackground.jpg\")";
 		document.body.style.backgroundSize = "cover";
     },
+	beforeDestroy() {
+		document.body.style.background = ""
+	  }
 });

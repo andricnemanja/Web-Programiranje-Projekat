@@ -1,0 +1,52 @@
+.rounded-lg {
+    border-radius: 1rem !important;
+  }
+  
+  .text-small {
+    font-size: 14px;
+  }
+  
+  .separator {
+    width: 100px;
+    height: 6px;
+    border-radius: 10px;
+    background-color: #E592A4;
+    margin-top: 30px;
+  }
+  
+  .text-uppercase {
+    letter-spacing: 0.2em;
+  }
+
+  body {
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    /*background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);*/
+    /*background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);*/
+  }
+
+  .membership button{
+    background-color: #E592A4;
+    border: #E592A4;
+    width: 120px;
+  }
+
+  .membership button:hover{
+    background-color: #dd6982;
+  }
+
+  .membership .checkmark{
+    color: #E592A4;
+    font-weight: bold;
+  }
+
+  .membership .box{
+    border: 1px solid #E592A4;
+  }
+
+  .membership .details{
+    padding-left: 30px;
+  }
+
+  .membership .title{
+    font-size: 40px;
+  }

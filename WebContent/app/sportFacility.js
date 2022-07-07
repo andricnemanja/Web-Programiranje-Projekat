@@ -102,6 +102,13 @@ Vue.component("sportFacility", {
 	mounted() {
 		axios.get('rest/facilities/')
 			.then(response => (this.facilities = response.data, this.backupFacilities = response.data));
-		document.body.style.background = "#cccccc"
+	},
+	beforeCreate() {
+		this.$nextTick(() => {
+		  document.querySelector('body').style.background = "linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)";
+		})
+	},
+	beforeDestroy() {
+		document.querySelector('body').style.background = "";
 	}
 });
