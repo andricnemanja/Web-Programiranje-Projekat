@@ -111,8 +111,6 @@ public class WorkoutHistoryDAO extends DAO {
 		workoutHistoryJSONObject.put("checkInDateTime", DateParser.makeDateString(newWorkout.getCheckInDateTime()));
 		workoutHistoryJSONObject.put("isDeleted", isDeleted ? "true" : "false");				
 
-
-
 		workoutHistoryJSONArray.add(workoutHistoryJSONObject);
 		if(!isDeleted)
 			workoutHistory.put(newWorkout.getId(), newWorkout);

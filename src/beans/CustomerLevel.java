@@ -1,12 +1,10 @@
 package beans;
 
-import java.util.HashMap;
-
 public class CustomerLevel {
 	
 	private CustomerType customerType;
 	private double discount;
-	private HashMap<CustomerType, Integer> pointsForNextLevel; 
+	private int pointsForNextLevel; 
 	
 	public enum CustomerType{
 		BRONZE,
@@ -14,8 +12,7 @@ public class CustomerLevel {
 		GOLD
 	}
 
-	public CustomerLevel(CustomerType customerType, double discount,
-			HashMap<CustomerType, Integer> pointsForNextLevel) {
+	public CustomerLevel(CustomerType customerType, double discount, int pointsForNextLevel) {
 		super();
 		this.customerType = customerType;
 		this.discount = discount;
@@ -38,15 +35,14 @@ public class CustomerLevel {
 		this.discount = discount;
 	}
 
-	public HashMap<CustomerType, Integer> getPointsForNextLevel() {
+	public int getPointsForNextLevel() {
 		return pointsForNextLevel;
 	}
 
-	public void setPointsForNextLevel(HashMap<CustomerType, Integer> pointsForNextLevel) {
+	public void setPointsForNextLevel(int pointsForNextLevel) {
 		this.pointsForNextLevel = pointsForNextLevel;
 	}
-	
-	
+
 	
 	
 }

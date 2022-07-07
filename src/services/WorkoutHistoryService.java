@@ -19,6 +19,7 @@ import beans.WorkoutHistory;
 import dao.CoachDAO;
 import dao.CommentDAO;
 import dao.CustomerDAO;
+import dao.MembershipDAO;
 import dao.SportFacilityDAO;
 import dao.WorkoutDAO;
 import dao.WorkoutHistoryDAO;
@@ -41,9 +42,14 @@ public class WorkoutHistoryService {
 	    	String contextPath = ctx.getRealPath("");
 			ctx.setAttribute("SportFacilityDAO", new SportFacilityDAO (contextPath));
 		}
+		if (ctx.getAttribute("membershipDAO") == null) {
+	    	String contextPath = ctx.getRealPath("");
+			ctx.setAttribute("membershipDAO", new MembershipDAO (contextPath));
+		}
 		if (ctx.getAttribute("customerDAO") == null) {
 	    	String contextPath = ctx.getRealPath("");
-			ctx.setAttribute("customerDAO", new CustomerDAO(contextPath));
+	    	MembershipDAO membershipDAO = (MembershipDAO) ctx.getAttribute("membershipDAO");
+			ctx.setAttribute("customerDAO", new CustomerDAO(contextPath, membershipDAO));
 		}
 		if (ctx.getAttribute("coachDAO") == null) {
 	    	String contextPath = ctx.getRealPath("");

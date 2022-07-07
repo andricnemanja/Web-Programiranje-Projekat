@@ -16,6 +16,7 @@ import beans.Customer;
 import beans.User;
 import dao.CoachDAO;
 import dao.CustomerDAO;
+import dao.MembershipDAO;
 import dao.UserDAO;
 
 @Path("")
@@ -33,9 +34,14 @@ public class LoginService {
 	
 	@PostConstruct
 	public void init() {
+		if (ctx.getAttribute("membershipDAO") == null) {
+	    	String contextPath = ctx.getRealPath("");
+			ctx.setAttribute("membershipDAO", new MembershipDAO (contextPath));
+		}
 		if (ctx.getAttribute("customerDAO") == null) {
 	    	String contextPath = ctx.getRealPath("");
-			ctx.setAttribute("customerDAO", new CustomerDAO(contextPath));
+	    	MembershipDAO membershipDAO = (MembershipDAO) ctx.getAttribute("membershipDAO");
+			ctx.setAttribute("customerDAO", new CustomerDAO(contextPath, membershipDAO));
 		}
 		if (ctx.getAttribute("coachDAO") == null) {
 	    	String contextPath = ctx.getRealPath("");

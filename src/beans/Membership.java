@@ -7,10 +7,10 @@ public class Membership {
 	private String id;
 	private MembershipType membershipType;
 	private Date paymentDate;
-	private Date startDateTime;
-	private Date endDateTime;
+	private Date endDate;
 	private double price;
 	private Customer customer;
+	private String customerUsername;
 	private MembershipStatus membershipStatus;
 	private int numberOfRemainingVisits;
 	
@@ -27,16 +27,15 @@ public class Membership {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Membership(String id, MembershipType membershipType, Date paymentDate, Date startDateTime, Date endDateTime,
-			double price, Customer customer, MembershipStatus membershipStatus, int numberOfRemainingVisits) {
+	public Membership(String id, MembershipType membershipType, Date paymentDate, Date endDate,
+			double price, String customerUsername, MembershipStatus membershipStatus, int numberOfRemainingVisits) {
 		super();
 		this.id = id;
 		this.membershipType = membershipType;
 		this.paymentDate = paymentDate;
-		this.startDateTime = startDateTime;
-		this.endDateTime = endDateTime;
+		this.endDate = endDate;
 		this.price = price;
-		this.customer = customer;
+		this.customerUsername = customerUsername;
 		this.membershipStatus = membershipStatus;
 		this.numberOfRemainingVisits = numberOfRemainingVisits;
 	}
@@ -65,20 +64,12 @@ public class Membership {
 		this.paymentDate = paymentDate;
 	}
 
-	public Date getStartDateTime() {
-		return startDateTime;
+	public Date getEndDate() {
+		return endDate;
 	}
 
-	public void setStartDateTime(Date startDateTime) {
-		this.startDateTime = startDateTime;
-	}
-
-	public Date getEndDateTime() {
-		return endDateTime;
-	}
-
-	public void setEndDateTime(Date endDateTime) {
-		this.endDateTime = endDateTime;
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
 	public double getPrice() {
@@ -111,6 +102,14 @@ public class Membership {
 
 	public void setNumberOfRemainingVisits(int numberOfRemainingVisits) {
 		this.numberOfRemainingVisits = numberOfRemainingVisits;
+	}
+
+	public String getCustomerUsername() {
+		return customerUsername;
+	}
+
+	public void setCustomerUsername(String customerUsername) {
+		this.customerUsername = customerUsername;
 	}
 	
 	

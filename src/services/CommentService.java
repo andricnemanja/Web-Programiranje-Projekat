@@ -22,6 +22,7 @@ import beans.Product;
 import beans.SportFacility;
 import dao.CommentDAO;
 import dao.CustomerDAO;
+import dao.MembershipDAO;
 import dao.ProductDAO;
 import dao.SportFacilityDAO;
 
@@ -36,13 +37,18 @@ public class CommentService {
 	
 	@PostConstruct
 	public void init() {
+		if (ctx.getAttribute("membershipDAO") == null) {
+	    	String contextPath = ctx.getRealPath("");
+			ctx.setAttribute("membershipDAO", new MembershipDAO (contextPath));
+		}
 		if (ctx.getAttribute("SportFacilityDAO") == null) {
 	    	String contextPath = ctx.getRealPath("");
 			ctx.setAttribute("SportFacilityDAO", new SportFacilityDAO (contextPath));
 		}
 		if (ctx.getAttribute("customerDAO") == null) {
 	    	String contextPath = ctx.getRealPath("");
-			ctx.setAttribute("customerDAO", new CustomerDAO(contextPath));
+	    	MembershipDAO membershipDAO = (MembershipDAO) ctx.getAttribute("membershipDAO");
+			ctx.setAttribute("customerDAO", new CustomerDAO(contextPath, membershipDAO));
 		}
 		if (ctx.getAttribute("commentDAO") == null) {
 	    	String contextPath = ctx.getRealPath("");

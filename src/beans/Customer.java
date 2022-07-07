@@ -54,11 +54,11 @@ public class Customer extends User {
 		this.points = points;
 	}
 
-	public CustomerLevel getMembershipLevel() {
+	public CustomerLevel getCustomerLevel() {
 		return customerLevel;
 	}
 
-	public void setMembershipLevel(CustomerLevel customerLevel) {
+	public void setCustomerLevel(CustomerLevel customerLevel) {
 		this.customerLevel = customerLevel;
 	}
 	

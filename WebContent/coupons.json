@@ -1,0 +1,13 @@
+[{
+	"code": "10POSTO",
+	"endDate": "09-08-2022 12:00",
+	"discountPercentage": 10.0,
+	"numberOfCoupons": "5"
+},
+{
+	"code": "20POSTO",
+	"endDate": "09-08-2022 12:00",
+	"discountPercentage": 20.0,
+	"numberOfCoupons": "3"
+}
+]

@@ -13,6 +13,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import beans.Customer;
+import beans.CustomerLevel;
+import beans.CustomerLevel.CustomerType;
 import beans.User;
 import beans.User.Gender;
 
@@ -20,34 +22,23 @@ public class CustomerDAO {
 	
 	private HashMap<String, Customer> customers = new HashMap<String, Customer>();
 	private String contextPath;
+	private MembershipDAO membershipDAO;
 	
 	public CustomerDAO() {
 		
 	}
 	
-	/***
-	 * @param contextPath Putanja do aplikacije u Tomcatu. Može se pristupiti samo iz servleta.
-	 */
-	public CustomerDAO(String contextPath) {
-		loadCustomers(contextPath);
+	public CustomerDAO(String contextPath, MembershipDAO membershipDAO) {
+		this.membershipDAO = membershipDAO;
 		this.contextPath = contextPath;
+		loadCustomers(contextPath);
 	}
 
-	/***
-	 * Vraæa sve proizvode.
-	 * @return
-	 */
 	public Collection<Customer> getAll() {
 		return customers.values();
 	}
 
-	
 
-	/**
-	 * Uèitava korisnike iz WebContent/users.txt fajla i dodaje ih u mapu {@link #products}.
-	 * Kljuè je id proizovda.
-	 * @param contextPath Putanja do aplikacije u Tomcatu
-	 */
 	private void loadCustomers(String contextPath) {
         JSONParser jsonParser = new JSONParser();
         
@@ -59,7 +50,9 @@ public class CustomerDAO {
             JSONArray customerList = (JSONArray) obj;
              
             
-            customerList.forEach( emp -> parseJSONObject( (JSONObject) emp ) );
+            for(Object object : customerList) {
+            	parseJSONObject((JSONObject)object);
+            }
  
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -84,6 +77,8 @@ public class CustomerDAO {
 		Date date = DateParser.parseDate(dateOfBirthString);
 		
 		Customer newCustomer = new Customer(firstName, lastName, email, username, password, gender, date);
+		newCustomer.setCustomerLevel(new CustomerLevel(CustomerType.BRONZE, 0, 1000));
+		newCustomer.setMembership(membershipDAO.getMembershipForCustomer(username));
 		customers.put(username, newCustomer);
 
 
@@ -112,7 +107,7 @@ public class CustomerDAO {
 		customerJSONObject.put("gender", newCustomer.getGender().name());
 		customerJSONObject.put("dateOfBirth", DateParser.makeDateString(newCustomer.getDateOfBirth()));	
 
-		customerJSONArray.add(customerJSONObject);
+		customerJSONArray.add(customerJSONObject);		
 		customers.put(newCustomer.getUsername(), newCustomer);
 
 		

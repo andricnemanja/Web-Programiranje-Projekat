@@ -19,6 +19,7 @@ import javax.ws.rs.core.MediaType;
 import beans.Customer;
 import beans.Product;
 import dao.CustomerDAO;
+import dao.MembershipDAO;
 import dao.ProductDAO;
 
 @Path("/customers")
@@ -32,9 +33,14 @@ public class CustomerService {
 	
 	@PostConstruct
 	public void init() {
+		if (ctx.getAttribute("membershipDAO") == null) {
+	    	String contextPath = ctx.getRealPath("");
+			ctx.setAttribute("membershipDAO", new MembershipDAO (contextPath));
+		}
 		if (ctx.getAttribute("customerDAO") == null) {
 	    	String contextPath = ctx.getRealPath("");
-			ctx.setAttribute("customerDAO", new CustomerDAO(contextPath));
+	    	MembershipDAO membershipDAO = (MembershipDAO) ctx.getAttribute("membershipDAO");
+			ctx.setAttribute("customerDAO", new CustomerDAO(contextPath, membershipDAO));
 		}
 	}
 	
