@@ -4,6 +4,8 @@ const SportFacility = {template: '<sportFacility></sportFacility>'}
 const OneSportFacility = {template: '<oneSportFacility></oneSportFacility>'}
 const WorkoutHistory = {template: '<workoutHistory></workoutHistory>'}
 const Membership = {template: '<membership></membership>'}
+const Cart = {template: '<cart></cart>'}
+
 
 
 const router = new VueRouter({
@@ -14,7 +16,8 @@ const router = new VueRouter({
 	    { path: '/sportFacility', component : SportFacility},
 	    { path: '/oneSportFacility', name:"oneSportFacility", component: OneSportFacility},
 	    { path: '/workoutHistory', name:"workoutHistory", component: WorkoutHistory},
-	    { path: '/membership', name:"membership", component: Membership}
+	    { path: '/membership', name:"membership", component: Membership},
+	    { path: '/cart', name:"cart", component: Cart}
 
 	  ]
 });
