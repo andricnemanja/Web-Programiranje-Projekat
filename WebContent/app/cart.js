@@ -76,7 +76,7 @@ Vue.component("cart", {
 			<div class="w-100"></div>
 			<input type="text" class="promo-code" placeholder=" Promo kod" v-on:input="isCouponValid()" v-model="inputField"/>
 			<div class="w-100"></div>
-			<button type="button" class="btn btn-primary" v-on:click="chooseMembership('MONTH_12')">Kupi</button>
+			<button type="button" class="btn btn-primary" v-on:click="buy()">Kupi</button>
 		</div>
 	</div>
     	`,
@@ -99,7 +99,14 @@ Vue.component("cart", {
 				document.querySelector('input').style.border = "1px solid red";
 				document.querySelector('input').style.outline = "1px solid red";
 			}
+		},
+
+		buy: function(){
+			axios.get('rest/membership/createMembership/' + this.selectedMembership + '/' + this.inputField)
+				.then(response => this.$router.push({ name: "successfulPurchase", params: {membership : response.data}}) );
+			
 		}
+		
 	},
 	mounted() {
 		this.selectedMembership = this.$route.params.membership;

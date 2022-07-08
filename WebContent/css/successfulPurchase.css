@@ -1,0 +1,48 @@
+
+  
+.successfulPurchase .text-small {
+  font-size: 14px;
+}
+
+.successfulPurchase  .separator {
+  width: 100px;
+  height: 6px;
+  border-radius: 10px;
+  background-color: #E592A4;
+  margin-top: 30px;
+}
+
+.successfulPurchase  .text-uppercase {
+  letter-spacing: 0.2em;
+}
+
+.successfulPurchase .btn{
+  background-color: #E592A4;
+  margin-top: 50px;
+  width: 120px;
+}
+
+.successfulPurchase .btn:hover{
+  background-color: #dd6982;
+}
+
+.successfulPurchase a:visited{
+  background-color: white;
+}
+
+.successfulPurchase .title{
+  font-size: 40px;
+}
+
+.successfulPurchase .details{
+  padding-left: 45px;
+}
+
+.successfulPurchase .list-item{
+  font-weight: bold;
+}
+.successfulPurchase img{
+  width: 200px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}

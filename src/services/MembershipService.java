@@ -85,6 +85,18 @@ public class MembershipService {
 	}
 	
 	@GET
+	@Path("/createMembership/{membershipName}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Membership createMembershipWithoutCoupon(@PathParam("membershipName") String membershipName) {
+		MembershipDAO membershipDAO = (MembershipDAO) ctx.getAttribute("membershipDAO");
+		
+		User user = (User) request.getSession().getAttribute("user");
+		Membership membership = membershipDAO.createMembership(membershipName, (Customer)user, null);
+		return membership;
+	}
+	
+	
+	@GET
 	@Path("/isCodeValid/{couponCode}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public boolean isCouponValid(@PathParam("couponCode") String couponCode) {
