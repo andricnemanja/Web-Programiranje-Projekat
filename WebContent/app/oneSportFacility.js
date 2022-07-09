@@ -13,7 +13,7 @@ Vue.component("oneSportFacility", {
 				url: 'https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=14681ea1598f4acba24e168748f298ef',
 				attribution:
 				  '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-				zoom: 15,
+				zoom: 16,
 				center: [47.413220, -1.219482],
 				marker: L.latLng(47.413220, -1.219482),
 				bounds: null
@@ -21,9 +21,9 @@ Vue.component("oneSportFacility", {
 		    }
 	},
 	 template: ` 
-	 <div class="container-fluid selected-sport-facility">
-		<div class="row justify-content-center facility-row">
-			<div class="col text-center facility-div">
+	 <div class="container-fluid h-100 selected-sport-facility">
+		<div class="row h-100 justify-content-center facility-row">
+			<div class="col h-100 text-center facility-div">
 				<img class="facility-image" v-bind:src="selectedFacility.imageName"></img>
 				<p class="average-rating"><img src="/FatPass/images/stars/oneStar.png"/> {{selectedFacility.averageRating}}</p>
 				<h4 class="facility-name">{{selectedFacility.name}}</h4>
@@ -54,7 +54,7 @@ Vue.component("oneSportFacility", {
 					</div>
 				</div>
 			</div>
-			<div class="col map-div">
+			<div class="col mh-100 map-div">
 				<l-map
 				style="height: 1000px; width: auto"
 				:zoom="zoom"
@@ -137,5 +137,5 @@ Vue.component("oneSportFacility", {
 		'l-map': window.Vue2Leaflet.LMap,
 		'l-tile-layer': window.Vue2Leaflet.LTileLayer,
 		'l-marker': window.Vue2Leaflet.LMarker,
-	  },
+	  }
 });

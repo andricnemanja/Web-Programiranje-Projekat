@@ -1,11 +1,12 @@
 .sport-facilities-wrapper{
-    width: 50%;
-    height: 92%;
-    position: absolute;
-    margin: 10px;
     background-color: whitesmoke;
-    text-align: center;
     overflow: auto;
+}
+
+.sport-facilities-wrapper .facilities-column{
+    box-shadow: 5px 0px 7px #888888;
+    padding: 50px;
+    z-index: 2;
 
 }
 
@@ -87,3 +88,17 @@
     margin-top: 20px;
     margin-left: 10px;
 }
+
+.sport-facilities-wrapper .map-div{
+    padding: 0px;
+    z-index: 1;
+}
+
+.sport-facilities-wrapper .fa-location-dot{
+    float: right;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    padding: 5px;
+}
+
