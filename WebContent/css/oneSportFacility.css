@@ -1,11 +1,12 @@
 .selected-sport-facility{
     background-color: #cccccc;
-    height: 100%;
 }
 
 .selected-sport-facility .map-div{
-    background-color: greenyellow;
+    padding: 0px;
     z-index: 1;
+    overflow: hidden;
+
 }
 
 .selected-sport-facility .facility-div{
@@ -13,12 +14,17 @@
     padding: 50px;
     box-shadow: 5px 0px 7px #888888;
     z-index: 2;
+    overflow: auto;
+    
 }
 
-
-.selected-sport-facility .facility-row{
-    height: auto;
+.selected-sport-facility .create-workout-div{
+    background-color: white;
+    padding: 50px;
+    box-shadow: 5px 0px 7px #888888;
+    z-index: 2;
 }
+
 
 .selected-sport-facility .facility-name{
     font-size: 34px;
@@ -53,7 +59,7 @@
 }
 
 .selected-sport-facility .facility-div h3{
-    margin-top: 50px;
+    margin-top: 40px;
 }
 
 .selected-sport-facility .facility-div .average-rating{
@@ -63,4 +69,64 @@
 
 .selected-sport-facility .facility-div .average-rating img{
     width: 20px;
+}
+
+.selected-sport-facility .btn-primary{
+    background-color: #E592A4;
+    border: #E592A4;
+    width: 140px;
+    padding: 8px;
+}
+
+.selected-sport-facility .btn-primary:hover{
+    background-color: #dd6982;
+}
+
+.selected-sport-facility .btn-primary:disabled{
+    background-color: #fdc2cf;
+    cursor: not-allowed;
+}
+
+.selected-sport-facility .btn-primary:focus{
+    background-color: #dd6982;
+    border: 0px;
+    outline: none;
+}
+
+.selected-sport-facility .btn-link{
+    color: #dd6982;
+    font-weight: 500;
+}
+
+.selected-sport-facility .btn-link:hover{
+    color: #af4e63;
+    text-decoration: none;
+}
+
+
+.selected-sport-facility .date{
+    border: 0px;
+    border-bottom: 1px solid #E592A4;
+    width: 200px;
+    margin-top: 20px;
+}
+
+.selected-sport-facility .date:focus{
+    outline: none;
+}
+
+.selected-sport-facility select{
+    border: 0px;
+    border-bottom: 1px solid #E592A4;
+    width: 200px;
+    margin-top: 30px;
+}
+
+.selected-sport-facility select:focus{
+    outline: none;
+}
+
+.selected-sport-facility .membership-not-valid{
+    margin-top: -20px;
+    color:#383838;
 }

@@ -25,13 +25,13 @@
 {
 	"name": "H2O Gym",
 	"facilityType": "GYM",
-	"longitude": 12.2,
-	"latitude": 13.12,
-	"street":"Futoska",
-	"streetNumber":"12",
+	"longitude": 19.71247,
+	"latitude": 44.74512,
+	"street":"Hajduk Veljkova",
+	"streetNumber":"bb",
 	"postCode": "15000",
 	"city": "Sabac",
-	"averageRating": 9.2,
+	"averageRating": 4.5,
 	"imageName":"h2oGym.png"
 },
 {

@@ -4,13 +4,14 @@
 	<link rel="stylesheet" type="text/css" href="/css/oneSportFacility.css">
 	<script src="jquery-3.3.1.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="login.js"></script>
 	<title>Objekat</title>
 </head>
 <body>
-	<div class="container-fluid selected-sport-facility">
-		<div class="row justify-content-center facility-row">
-			<div class="col text-center facility-div">
+	<div class="container-fluid h-50 selected-sport-facility">
+		<div class="row h-50 justify-content-center facility-row">
+			<div class="col h-50 text-center facility-div">
 				<img class="facility-image" v-bind:src="selectedFacility.imageName"></img>
 				
 				<p class="average-rating"><img src="/images/stars/oneStar.png"/>{{selectedFacility.averageRating}}</p>
@@ -18,6 +19,18 @@
 				<p class="facility-address">{{selectedFacility.location.streetName}} {{selectedFacility.location.houseNumber}}, {{selectedFacility.location.city}}</p>
 				<hr>
 				<p class="facility-type">{{selectedFacility.facilityType}}</p>
+
+				<button type="button" class="btn btn-primary my-4" data-bs-toggle="collapse" data-bs-target="#createWorkout">Zakaži trening</button>
+				<div id="createWorkout" class="collapse">
+					<input type="date" class="date" value="2022-07-08" min="2022-07-08" max="2022-08-08">
+					<br/>
+					<select>
+						<option>1</option>
+					</select>
+					<br/>
+					<button type="button" class="btn btn-link my-4" >Potvrdi</button>
+
+				</div>
 
 				<h3>Šta korisnici kažu o ovom objektu:</h3>
 

@@ -13,7 +13,6 @@ public class Customer extends User {
 	
 	public Customer() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Customer(String firstName, String lastName, String email, String username, String password,
