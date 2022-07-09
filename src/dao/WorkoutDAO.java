@@ -74,6 +74,16 @@ public class WorkoutDAO extends DAO {
 	public Workout getWorkout(int id) {
 		return workouts.get(id);
 	}
+	
+	public Collection<Workout> getWorkoutsForFacility(String facilityName){
+		ArrayList<Workout> workoutsForFacility = new ArrayList<>();
+		for(Workout workout : workouts.values()) {
+			if(workout.getSportFacility().getName().equals(facilityName)) {
+				workoutsForFacility.add(workout);
+			}
+		}
+		return workoutsForFacility;
+	}
 
 
 }

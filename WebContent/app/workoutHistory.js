@@ -10,7 +10,7 @@ Vue.component("workoutHistory", {
 	},
 	 template: ` 
 	 <div class="container workout-history-wrapper">
-		<h3 class = "title">Vaši treninzi u prethodnih mesec dana:</h3>
+		<h3 class = "title">Vaši treninzi:</h3>
 		<div class="customer-workouts" v-bind:hidden="currentUser.userType != 'CUSTOMER'">
 			<table class="table table-hover">
 				<thead>

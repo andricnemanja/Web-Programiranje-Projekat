@@ -10,6 +10,9 @@ public class WorkoutHistory {
 	private Customer customer;
 	private Coach coach;
 
+	public WorkoutHistory() {
+	}
+	
 
 	public WorkoutHistory(int id, Date checkInDateTime, Workout workout, Customer customer, Coach coach) {
 		super();
@@ -20,6 +23,14 @@ public class WorkoutHistory {
 		this.coach = coach;
 	}
 
+	public WorkoutHistory(Date checkInDateTime, Workout workout, Customer customer, Coach coach) {
+		super();
+		this.id = 0;
+		this.checkInDateTime = checkInDateTime;
+		this.workout = workout;
+		this.customer = customer;
+		this.coach = coach;
+	}
 
 	public Date getCheckInDateTime() {
 		return checkInDateTime;

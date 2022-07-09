@@ -99,5 +99,6 @@ public class MembershipDAO extends DAO {
 		else
 			return membershipFactory.calculatePrice(membershipType, customer.getCustomerLevel(), coupon);
 	}
+	
 
 }

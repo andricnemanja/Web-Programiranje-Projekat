@@ -5,7 +5,9 @@ import java.util.Collection;
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -13,7 +15,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import beans.Comment;
+import beans.Customer;
 import beans.User;
+import beans.Workout;
 import beans.Workout.WorkoutType;
 import beans.WorkoutHistory;
 import dao.CoachDAO;
@@ -23,6 +27,7 @@ import dao.MembershipDAO;
 import dao.SportFacilityDAO;
 import dao.WorkoutDAO;
 import dao.WorkoutHistoryDAO;
+import dto.WorkoutHistoryDTO;
 
 @Path("/workoutHistory")
 public class WorkoutHistoryService {
@@ -104,6 +109,29 @@ public class WorkoutHistoryService {
 	public WorkoutHistory deletePersonalWorkout(@PathParam("id") int id) {
 		WorkoutHistoryDAO dao = (WorkoutHistoryDAO) ctx.getAttribute("workoutHistoryDAO");
 		return dao.deleteWorkout(id);
+	}
+	
+	@GET
+	@Path("/getWorkoutsForFacility/{name}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<Workout> getWorkoutsForFacility(@PathParam("name") String name) {
+    	WorkoutDAO workoutDAO = (WorkoutDAO) ctx.getAttribute("workoutDAO");
+		return workoutDAO.getWorkoutsForFacility(name);
+	}
+	
+	@POST
+	@Path("/createWorkout")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public WorkoutHistory createWorkout(WorkoutHistoryDTO workoutHistoryDTO) {
+		WorkoutHistoryDAO dao = (WorkoutHistoryDAO) ctx.getAttribute("workoutHistoryDAO");
+    	WorkoutDAO workoutDAO = (WorkoutDAO) ctx.getAttribute("workoutDAO");
+		User user = (User) request.getSession().getAttribute("user");
+		
+		Workout workout = workoutDAO.getWorkout(workoutHistoryDTO.getWorkoutID());
+		WorkoutHistory workoutHistory = new WorkoutHistory(workoutHistoryDTO.getCheckInDateTime(), workout, (Customer)user, workout.getCoach());
+
+		return dao.saveWorkout(workoutHistory, false);
 	}
 	
 }

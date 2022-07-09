@@ -20,6 +20,7 @@ import javax.ws.rs.core.MediaType;
 import beans.Comment;
 import beans.Customer;
 import beans.Membership;
+import beans.Membership.MembershipStatus;
 import beans.Product;
 import beans.SportFacility;
 import beans.User;
@@ -126,13 +127,29 @@ public class MembershipService {
 		return membershipDAO.getPrice(membershipName, (Customer)user, null);
 	}
 	
-	
 	@GET
 	@Path("/getCouponCodes")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<String> getAllCouponCodes() {
 		CouponDAO couponDAO = (CouponDAO) ctx.getAttribute("couponDAO");
 		return couponDAO.getAllCouponCodes();
+	}
+	
+	@GET
+	@Path("/isMembershipValid")
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean isMembershipValid() {
+		
+		User user = (User) request.getSession().getAttribute("user");
+		if(user == null) 
+			return false;
+		Membership membership = ((Customer)user).getMembership();
+		
+		if(membership.getMembershipStatus() == MembershipStatus.ACTIVE && membership.getNumberOfRemainingVisits() > 0)
+			return true;
+		return false;
+		
+		
 	}
 	
 }

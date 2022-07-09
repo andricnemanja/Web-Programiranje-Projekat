@@ -22,6 +22,7 @@ public class WorkoutHistoryDAO extends DAO {
 	private WorkoutDAO workoutDAO;
 	
 	private String contextPath;
+	private int maxID = 100;
 
 	
 	public WorkoutHistoryDAO() {
@@ -64,6 +65,8 @@ public class WorkoutHistoryDAO extends DAO {
 	
 		WorkoutHistory newWorkoutHistory = new WorkoutHistory(id, checkInDateTime, workout, customer, coach);
 		workoutHistory.put(id, newWorkoutHistory);
+		
+		if(id > maxID) maxID = id;
 	}
 	
 	public Collection<WorkoutHistory> getWorkoutHistoryForUser(String username) {
@@ -104,6 +107,7 @@ public class WorkoutHistoryDAO extends DAO {
 			workoutHistoryJSONArray.add(workoutHistoryJSONObject);
 			workoutHistoryJSONObject = new JSONObject();
 		}
+		newWorkout.setId(++maxID);
 		workoutHistoryJSONObject.put("id",newWorkout.getId());
 		workoutHistoryJSONObject.put("customerUsername", newWorkout.getCustomer().getUsername());
 		workoutHistoryJSONObject.put("coachUserName", newWorkout.getCoach().getUsername());
