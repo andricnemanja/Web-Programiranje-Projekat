@@ -12,6 +12,7 @@ public class SportFacility {
 	
 	
 	public enum FacilityType{
+		NULL,
 		GYM,
 		POOL,
 		SPORTS_CENTER,

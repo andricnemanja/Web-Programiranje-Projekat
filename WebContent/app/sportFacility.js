@@ -7,6 +7,7 @@ Vue.component("sportFacility", {
 			  citySearchOption:"",
 			  facilityTypeOption:"",
 			  ratingOption:"",
+			  searchDTO:{name:"", city:"", rating:0, facilityType:"NULL", sortingStrategy:"NULL"},
 
 
 			  url: 'https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=14681ea1598f4acba24e168748f298ef',
@@ -21,34 +22,45 @@ Vue.component("sportFacility", {
 	 template: ` 
 	 <div class="container-fluid h-100 sport-facilities-wrapper">
 	 	<div class="row h-100 justify-content-center">
-		 	<div class="col h-100 text-center facilities-column">
+		 	<div class="col h-100 facilities-column">
 
-				<input v-model="nameSearhField" v-on:input="filterNameBackend()" type="text" placeholder="Pretraži po imenu">
+			 	<div class="search-fields">
+					<input v-model="searchDTO.name" v-on:input="search()" type="text" placeholder="Pretraži po imenu">
 
-				<select v-model="citySearchOption" v-on:change="filterCityBackend()">
-					<option value="">Svi gradovi</option>
-					<option value="Novi Sad">Novi Sad</option>
-					<option value="Beograd">Beograd</option>
-					<option value="Sabac">Šabac</option>
-				</select>
+					<select v-model="searchDTO.city" v-on:change="search()">
+						<option value="">Svi gradovi</option>
+						<option value="Novi Sad">Novi Sad</option>
+						<option value="Beograd">Beograd</option>
+						<option value="Sabac">Šabac</option>
+					</select>
 
-				<select v-model="ratingOption" v-on:change="filterRatingBackend()">
-					<option value="">Sve ocene</option>
-					<option value="6">Veće od 6</option>
-					<option value="7">Veće od 7</option>
-					<option value="8">Veće od 8</option>
-					<option value="9">Veće od 9</option>
-				</select>
-				<select v-model="facilityTypeOption" v-on:change="filterTypeBackend()">
-					<option value="">Discpline</option>
-					<option value="GYM">Teretane</option>
-					<option value="SPA">SPA</option>
-					<option value="POOL">Bazeni</option>
-				</select>
+					<select v-model="searchDTO.rating" v-on:change="search()">
+						<option value="0">Sve ocene</option>
+						<option value="1">Veće od 1</option>
+						<option value="2">Veće od 2</option>
+						<option value="3">Veće od 3</option>
+						<option value="4">Veće od 4</option>
+					</select>
+					<select v-model="searchDTO.facilityType" v-on:change="search()">
+						<option value="NULL">Discipline</option>
+						<option value="GYM">Teretane</option>
+						<option value="DANCE_STUDIO">Plesni studio</option>
+						<option value="POOL">Bazeni</option>
+					</select>
+					<select v-model="searchDTO.sortingStrategy" v-on:change="search()">
+						<option value="NULL">Sortiranje</option>
+						<option value="RATING_ASC">Ocena(rastuće)</option>
+						<option value="RATING_DESC">Ocena(opadajuće)</option>
+						<option value="NAME_ASC">Naziv(rastuće)</option>
+						<option value="NAME_DESC">Naziv(opadajuće)</option>
+						<option value="LOCATION_ASC">Lokacija(rastuće)</option>
+						<option value="LOCATION_DESC">Lokacija(opadajuće)</option>
+					</select>
+				</div>
 
-				<div class="one-sport-facility" v-for="f in facilities" v-on:click="showSelectedFacility(f)">
+				<div class="one-sport-facility text-center" v-for="f in facilities" v-on:click="showSelectedFacility(f)">
 					<img class="facility-image" v-bind:src="f.imageName"></img>
-					<p class="average-rating">{{f.averageRating}}</p>			
+					<p class="average-rating"><img src="/FatPass/images/stars/oneStar.png"/> {{f.averageRating}}</p>			
 					<h4 class="facility-name">{{f.name}}</h4>
 					<p class="facility-address">{{f.location.streetName}} {{f.location.houseNumber}}, {{f.location.city}}</p>
 					<hr>
@@ -81,54 +93,6 @@ Vue.component("sportFacility", {
     	`,
 	
 	methods: {
-		filterName : function() {
-			if(this.nameSearhField == ""){
-				this.facilities = {... this.backupFacilities};
-			}
-			else{
-				this.facilities = this.facilities.filter((f) => f.name.toLowerCase().includes(this.nameSearhField.toLowerCase()));
-			}
-		},
-		filterNameBackend : function() {
-			if(this.nameSearhField == ""){
-				axios.get('rest/facilities/')
-					.then(response => (this.facilities = response.data));
-			}
-			else{
-				axios.get('rest/facilities/name/' + this.nameSearhField)
-					.then(response => (this.facilities = response.data));
-			}
-		},
-		filterCityBackend : function() {
-			if(this.citySearchOption == ""){
-				axios.get('rest/facilities/')
-					.then(response => (this.facilities = response.data));
-			}
-			else{
-				axios.get('rest/facilities/city/' + this.citySearchOption)
-					.then(response => (this.facilities = response.data));
-			}
-		},
-		filterTypeBackend : function() {
-			if(this.facilityTypeOption == ""){
-				axios.get('rest/facilities/')
-					.then(response => (this.facilities = response.data));
-			}
-			else{
-				axios.get('rest/facilities/type/' + this.facilityTypeOption)
-					.then(response => (this.facilities = response.data));
-			}
-		},
-		filterRatingBackend : function() {
-			if(this.ratingOption == ""){
-				axios.get('rest/facilities/')
-					.then(response => (this.facilities = response.data));
-			}
-			else{
-				axios.get('rest/facilities/rating/' + this.ratingOption)
-					.then(response => (this.facilities = response.data));
-			}
-		},
 		showSelectedFacility : function(selectedFacility){
 			this.$router.push({ name: "oneSportFacility", params: {selectedFacility : selectedFacility}});
 		},
@@ -143,6 +107,10 @@ Vue.component("sportFacility", {
 		},
 		getMarkerLocation : function(lat, long){
 			return L.latLng(lat, long);
+		},
+		search: function(){
+			axios.post('rest/facilities/search', this.searchDTO)
+				.then(response => (this.facilities = response.data));
 		}
 	
 	},

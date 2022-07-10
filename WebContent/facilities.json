@@ -7,7 +7,7 @@
 	"streetNumber":"24",
 	"postCode": "21000",
 	"city": "Novi Sad",
-	"averageRating": 8.5,
+	"averageRating": 2.5,
 	"imageName":"exeGym.png"
 },
 {
@@ -19,7 +19,7 @@
 	"streetNumber":"95",
 	"postCode": "21000",
 	"city": "Novi Sad",
-	"averageRating": 9.4,
+	"averageRating": 4.4,
 	"imageName":"megaGym.png"
 },
 {
@@ -43,7 +43,7 @@
 	"streetNumber":"2",
 	"postCode": "21000",
 	"city": "Novi Sad",
-	"averageRating": 9.4,
+	"averageRating": 3.4,
 	"imageName":"spens.png"
 },
 { 
@@ -55,7 +55,7 @@
 	"streetNumber":"83",
 	"postCode": "21000",
 	"city": "Novi Sad",
-	"averageRating": 9.4,
+	"averageRating": 2.4,
 	"imageName":"classicGym.png"
 },
 {
@@ -67,7 +67,43 @@
 	"streetNumber":"37",
 	"postCode": "21000",
 	"city": "Novi Sad",
-	"averageRating": 9.4,
+	"averageRating": 1.4,
 	"imageName":"sajmiste.png"
+},
+{
+	"name": "Urban Dance",
+	"facilityType": "DANCE_STUDIO",
+	"latitude": 44.81476787963618,
+	"longitude": 20.435088252282767,
+	"street":"Milentija Popovica",
+	"streetNumber":"1",
+	"postCode": "11000",
+	"city": "Beograd",
+	"averageRating": 2.4,
+	"imageName":"urbanDance.png"
+},
+{
+	"name": "Iron Republic",
+	"facilityType": "GYM",
+	"latitude": 44.81851776590161,
+	"longitude": 20.476079765365792,
+	"street":"Bulevar Despota Stefana",
+	"streetNumber":"68c",
+	"postCode": "11000",
+	"city": "Beograd",
+	"averageRating": 4.4,
+	"imageName":"ironRepublic.png"
+},
+{
+	"name": "Mega Gym Novi Beograd",
+	"facilityType": "GYM",
+	"latitude": 44.80030082786856,
+	"longitude": 20.402602636583524,
+	"street":"Omladinskih brigada",
+	"streetNumber":"65a",
+	"postCode": "11000",
+	"city": "Beograd",
+	"averageRating": 4.8,
+	"imageName":"megaGym.png"
 }
 ]

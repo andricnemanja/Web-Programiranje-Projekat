@@ -23,7 +23,7 @@
     cursor: pointer;
 }
 
-.sport-facilities-wrapper img{
+.sport-facilities-wrapper .facility-image{
     margin-top: 10px;
     width: 150px;
     height: 150px;
@@ -47,6 +47,7 @@
 
 .sport-facilities-wrapper .average-rating{
     font-weight: bold;
+    margin-top: 10px;
 }
 
 .sport-facilities-wrapper .facility-address{
@@ -67,12 +68,13 @@
     width: 200px;
     height: 30px;
     outline: none;
-    border: 1px solid #E592A4;
-    border-radius: 15px;
-    padding-left: 10px;
+    border: 0px;
+    border-bottom: 1px solid #E592A4;
     background-color: transparent;
     margin-bottom: 10px;
     margin-top: 20px;
+    font-size: 14px;
+    color: #5a5a5a;
 }
 
 .sport-facilities-wrapper select{
@@ -80,13 +82,13 @@
     width: 120px;
     height: 30px;
     outline: none;
-    border: 1px solid #E592A4;
-    border-radius: 15px;
-    padding-left: 10px;
+    border: 0px;
+    border-bottom: 1px solid #E592A4;
     background-color: transparent;
-    margin-bottom: 10px;
-    margin-top: 20px;
+    margin-bottom: 20px;
     margin-left: 10px;
+    font-size: 14px;
+    color: #5a5a5a;
 }
 
 .sport-facilities-wrapper .map-div{
@@ -96,8 +98,8 @@
 
 .sport-facilities-wrapper .fa-location-dot{
     float: right;
+    margin-top: -10px;
     margin-right: 5px;
-    margin-bottom: 5px;
     font-size: 20px;
     padding: 5px;
 }
@@ -116,3 +118,14 @@
     cursor: pointer;
     color: #333333;
 }
+
+.sport-facilities-wrapper .average-rating img{
+    margin-top: -2px;
+    width: 13px;
+    height: 13px;
+}
+
+.sport-facilities-wrapper .search-fields{
+    padding-left: 20px;
+}
+

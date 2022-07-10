@@ -15,6 +15,8 @@ import org.json.simple.parser.JSONParser;
 import beans.Location;
 import beans.SportFacility;
 import beans.SportFacility.FacilityType;
+import dto.SportFacilitySearchDTO;
+import sort.SportFacilitySort;
 
 public class SportFacilityDAO {
 
@@ -130,6 +132,27 @@ public class SportFacilityDAO {
 	public SportFacility getSportFacility(String name) {
 		return facilities.get(name);
 	}
+	
+	public Collection<SportFacility> search(SportFacilitySearchDTO dto) {
+		ArrayList<SportFacility> list = new ArrayList<SportFacility>();
+		
+		for(SportFacility sportFacility : facilities.values()) {
+			if(dto.getRating() != -1 && sportFacility.getAverageRating() < dto.getRating()) 
+				continue;
+			if(!dto.getName().equals("") && !sportFacility.getName().toLowerCase().contains(dto.getName().toLowerCase()))
+				continue;
+			if(!dto.getCity().equals("") && !sportFacility.getLocation().getCity().toLowerCase().contains(dto.getCity().toLowerCase()))
+				continue;
+			if(dto.getFacilityType() != FacilityType.NULL && !(sportFacility.getFacilityType() == dto.getFacilityType()))
+				continue;
+			
+			list.add(sportFacility);
+			
+		}
+		return SportFacilitySort.sort(dto.getSortingStrategy(), list);
+	}
+	
+	
 
 
 }
