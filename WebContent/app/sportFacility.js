@@ -53,8 +53,7 @@ Vue.component("sportFacility", {
 					<p class="facility-address">{{f.location.streetName}} {{f.location.houseNumber}}, {{f.location.city}}</p>
 					<hr>
 					<p class="facility-type">{{f.facilityType}}</p>
-					<div class="fa-solid fa-location-dot" @mouseover="zoomUpdated(17); centerUpdated([f.location.latitude, f.location.longitude])" 
-					@mouseleave="zoomUpdated(10); centerUpdated([44.9667, 20.0679])"></div>
+					<div class="fa-solid fa-location-dot" v-on:mouseover="zoomUpdated(17); centerUpdated([f.location.latitude, f.location.longitude])"></div>
 				</div>
 			</div>
 			<div class="col h-100 text-center map-div">
@@ -66,7 +65,15 @@ Vue.component("sportFacility", {
 				@update:center="centerUpdated"
 				@update:bounds="boundsUpdated">
 					<l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-					<l-marker v-for="facility in facilities" :lat-lng="getMarkerLocation(facility.location.latitude, facility.location.longitude)"></l-marker>
+					<l-marker v-for="facility in facilities" :lat-lng="getMarkerLocation(facility.location.latitude, facility.location.longitude)">
+						<l-popup>
+							<div class="text-center">
+								<img class="popup-facility-image" v-bind:src="facility.imageName"></img>
+								<h4 class="popup-facility-name" v-on:click="showSelectedFacility(facility)">{{facility.name}}</h4>
+								<p class="facility-address">{{facility.location.streetName}} {{facility.location.houseNumber}}, {{facility.location.city}}</p>
+							</div>
+						</l-popup>
+					</l-marker>
 				</l-map>
 			</div>
 		</div>
@@ -155,5 +162,6 @@ Vue.component("sportFacility", {
 		'l-map': window.Vue2Leaflet.LMap,
 		'l-tile-layer': window.Vue2Leaflet.LTileLayer,
 		'l-marker': window.Vue2Leaflet.LMarker,
+		'l-popup': window.Vue2Leaflet.LPopup
 	}
 });

@@ -102,3 +102,17 @@
     padding: 5px;
 }
 
+.sport-facilities-wrapper .popup-facility-image{
+    width: 75px;
+    height: 75px;
+}
+
+.sport-facilities-wrapper .popup-facility-name{
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.sport-facilities-wrapper .popup-facility-name:hover{
+    cursor: pointer;
+    color: #333333;
+}
