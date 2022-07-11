@@ -71,5 +71,27 @@
 }
 
 .workout-history-wrapper .nav-pills{
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+}
+
+.workout-history-wrapper .from-date{
+    border: 0px;
+    border-bottom: 1px solid #E592A4;
+    width: 120px;
+    font-size: 14px;
+    color: #5a5a5a;
+}
+
+.workout-history-wrapper .to-date{
+    border: 0px;
+    border-bottom: 1px solid #E592A4;
+    width: 120px;
+    font-size: 14px;
+    color: #5a5a5a;
+    margin-right: 30px;
+    margin-left: 5px;
+}
+
+.workout-history-wrapper input[type="date"]:focus{
+    outline: none;
 }

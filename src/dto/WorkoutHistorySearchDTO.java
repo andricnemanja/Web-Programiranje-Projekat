@@ -1,5 +1,7 @@
 package dto;
 
+import java.util.Date;
+
 import beans.SportFacility.FacilityType;
 import beans.Workout.WorkoutType;
 
@@ -11,6 +13,8 @@ public class WorkoutHistorySearchDTO {
 	private FacilityType facilityType;
 	private WorkoutType workoutType;
 	private String sortingStrategy;
+	private Date fromDate;
+	private Date toDate;
 	
 	public WorkoutHistorySearchDTO() {
 		// TODO Auto-generated constructor stub
@@ -70,6 +74,22 @@ public class WorkoutHistorySearchDTO {
 
 	public void setSortingStrategy(String sortingStrategy) {
 		this.sortingStrategy = sortingStrategy;
+	}
+
+	public Date getFromDate() {
+		return fromDate;
+	}
+
+	public void setFromDate(Date fromDate) {
+		this.fromDate = fromDate;
+	}
+
+	public Date getToDate() {
+		return toDate;
+	}
+
+	public void setToDate(Date toDate) {
+		this.toDate = toDate;
 	}
 
 

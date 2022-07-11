@@ -6,7 +6,7 @@ Vue.component("workoutHistory", {
 				workoutHistoryPersonal: {},
 				currentUser: {},
 				todayDateInMiliseconds:null,
-				searchDTO:{facilityName:"", minPrice:-1, maxPrice:-1, withoutAdditionalPayment:false, facilityType:"NULL", workoutType:"NULL", sortingStrategy:"NULL"},
+				searchDTO:{facilityName:"", minPrice:-1, maxPrice:-1, withoutAdditionalPayment:false, facilityType:"NULL", workoutType:"NULL", sortingStrategy:"NULL", fromDate:null, toDate:null},
 				minPrice:"",
 				maxPrice:""
 		    }
@@ -30,6 +30,8 @@ Vue.component("workoutHistory", {
 			<input type="checkbox" id="additionalPayment" v-model="searchDTO.withoutAdditionalPayment" v-on:change="search()">
             <label for="additionalPayment">Bez doplate</label>
 
+			<input type="text" onfocus="(this.type='date')" class="from-date" placeholder="Od" v-model="searchDTO.fromDate" v-on:change="search()" >
+			<input type="text" onfocus="(this.type='date')" class="to-date" placeholder="Do" v-model="searchDTO.toDate" v-on:change="search()"> 
 
 			<select v-model="searchDTO.workoutType" v-on:change="search()">
 				<option value="NULL">Tip treninga</option>
@@ -89,6 +91,7 @@ Vue.component("workoutHistory", {
 						<th>Naziv treninga</th>
 						<th>Objekat</th>
 						<th>Datum</th>
+						<th>Doplata</th>
 					</tr>
 					</thead>
 					<tbody>
@@ -96,6 +99,7 @@ Vue.component("workoutHistory", {
 						<td>{{workout.workout.name}}</td>
 						<td>{{workout.workout.sportFacility.name}}</td>
 						<td>{{workout.checkInDateTime | dateFormat('DD.MM.YYYY.')}}</td>
+						<td>{{workout.workout.additionalPayment | additionalPaymentFormat()}}</td>
 					</tr>
 					</tbody>
 				</table>
@@ -107,6 +111,7 @@ Vue.component("workoutHistory", {
 						<th>Naziv treninga</th>
 						<th>Objekat</th>
 						<th>Datum</th>
+						<th>Doplata</th>
 						<th></th>
 					</tr>
 					</thead>
@@ -115,6 +120,7 @@ Vue.component("workoutHistory", {
 						<td>{{workout.workout.name}}</td>
 						<td>{{workout.workout.sportFacility.name}}</td>
 						<td>{{workout.checkInDateTime | dateFormat('DD.MM.YYYY.')}}</td>
+						<td>{{workout.workout.additionalPayment | additionalPaymentFormat()}}</td>
 						<td><button type="button" class="btn btn-outline-secondary" v-on:click="cancelWorkout(workout)" :disabled = "((workout.checkInDateTime - todayDateInMiliseconds) < 172800000) ? true : false">Otkaži</button></td>
 					</tr>
 					</tbody>

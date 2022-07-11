@@ -178,6 +178,10 @@ public class WorkoutHistoryDAO extends DAO {
 				continue;
 			if(dto.getWorkoutType() != WorkoutType.NULL && workout.getWorkout().getWorkoutType() != dto.getWorkoutType())
 				continue;
+			if(dto.getFromDate() != null && workout.getCheckInDateTime().before(dto.getFromDate()))
+				continue;
+			if(dto.getToDate() != null && workout.getCheckInDateTime().after(dto.getToDate()))
+				continue;
 			
 			list.add(workout);
 		}
