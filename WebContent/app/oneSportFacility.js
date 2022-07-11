@@ -53,6 +53,27 @@ Vue.component("oneSportFacility", {
 						<p>{{com.commentText}}</p>
 					</div>
 				</div>
+
+				<h3 class="workout-schedule">Raspored treninga:</h3>
+
+				<div class="facility-workouts text-start">
+					<div class="col-12 workout-div" v-for="workout in workoutsForFacility">
+						<div class="row align-items-center">
+							<div class="col">
+								<img v-bind:src="'/FatPass/images/workouts/' + workout.imageName + ''"/>
+							</div>
+							<div class="col text-center">
+								<h5>{{workout.name}}</h5>
+								<p>{{workout.description}}</p>
+							</div>
+							<div class="col text-center">
+								<p>{{workout.additionalPayment | additionalPaymentFormat()}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
 			</div>
 			<div class="col mh-100 map-div">
 				<l-map
@@ -137,5 +158,12 @@ Vue.component("oneSportFacility", {
 		'l-map': window.Vue2Leaflet.LMap,
 		'l-tile-layer': window.Vue2Leaflet.LTileLayer,
 		'l-marker': window.Vue2Leaflet.LMarker,
-	  }
+	  },
+	filters:{
+		additionalPaymentFormat(value){
+			if(value == 0)
+				return "Nema doplate";
+			return value + " RSD";
+		}
+	}
 });

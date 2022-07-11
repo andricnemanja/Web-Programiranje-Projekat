@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="container-fluid h-100 selected-sport-facility">
-		<div class="row h-100 justify-content-center facility-row">
+		<div class="row h-100 facility-row">
 			<div class="col h-100 text-center facility-div">
 				<img class="facility-image" v-bind:src="selectedFacility.imageName"></img>
 				
@@ -42,6 +42,24 @@
 					</div>
 				</div>
 
+				<h3>Raspored treninga:</h3>
+
+				<div class="facility-workouts text-start" v-bind:hidden="currentUser.userType != 'CUSTOMER'">
+					<div class="col-12 workout-div" v-for="com in comments">
+						<div class="row align-items-center">
+							<div class="col">
+								<img src="/images/workouts/personal.jpg" />
+							</div>
+							<div class="col text-center">
+								<h5>Workout type</h5>
+								<p>description</p>
+							</div>
+							<div class="col text-center">
+								<p>doplata</p>
+							</div>
+						</div>
+					</div>
+				</div>
 
 			</div>
 			<div class="col map-div">

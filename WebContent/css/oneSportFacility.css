@@ -130,3 +130,20 @@
     margin-top: -20px;
     color:#383838;
 }
+
+.selected-sport-facility .workout-div{
+    margin-top: 20px;
+    background-color: whitesmoke;
+}
+
+.selected-sport-facility .facility-workouts img{
+    width: 100px;
+    height: 100px;
+}
+.selected-sport-facility .facility-workouts p{
+    margin: 0px;
+}
+
+.selected-sport-facility .workout-schedule{
+    margin-bottom: 40px;
+}
