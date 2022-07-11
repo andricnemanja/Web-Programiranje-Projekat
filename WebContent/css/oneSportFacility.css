@@ -147,3 +147,20 @@
 .selected-sport-facility .workout-schedule{
     margin-bottom: 40px;
 }
+
+.selected-sport-facility textarea{
+    background-color: whitesmoke;
+    border: 0px;
+    border-bottom: 2px solid #E592A4;
+}
+
+.selected-sport-facility textarea:focus{
+    border: 0px;
+    border-bottom: 2px solid #E592A4;
+    outline: none;
+}
+
+.selected-sport-facility #newComment select{
+    width: 50px;
+    text-align: center;
+}

@@ -42,6 +42,24 @@
 					</div>
 				</div>
 
+				<div clas="new-comment-div">
+					<button type="button" class="btn btn-primary my-4" data-bs-toggle="collapse" data-bs-target="#newComment">Ostavi komentar</button>
+					<div id="newComment" class="collapse">
+						<textarea name="new-comment-text" cols="30" rows="5"></textarea>
+						<br/>
+						<label>Ocena: </label>
+						<select>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+						</select>
+						<br/>
+						<button type="button" class="btn btn-link my-4" >Potvrdi</button>
+					</div>
+				</div>
+
 				<h3>Raspored treninga:</h3>
 
 				<div class="facility-workouts text-start" v-bind:hidden="currentUser.userType != 'CUSTOMER'">

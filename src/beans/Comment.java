@@ -6,6 +6,7 @@ public class Comment {
 	private SportFacility sportFacility;
 	private String commentText;
 	private int rating;
+	private boolean isApproved = true;
 	
 	public Comment(int id, Customer customer, SportFacility sportFacility, String commentText, int rating) {
 		super();
@@ -45,6 +46,14 @@ public class Comment {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public boolean isApproved() {
+		return isApproved;
+	}
+
+	public void setApproved(boolean isApproved) {
+		this.isApproved = isApproved;
 	}
 	
 	

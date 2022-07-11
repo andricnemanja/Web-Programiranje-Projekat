@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -20,17 +21,23 @@ import beans.Comment;
 import beans.Customer;
 import beans.Product;
 import beans.SportFacility;
+import beans.User;
 import dao.CommentDAO;
 import dao.CustomerDAO;
 import dao.MembershipDAO;
 import dao.ProductDAO;
 import dao.SportFacilityDAO;
+import dto.SaveCommentDTO;
+import dto.SportFacilitySearchDTO;
 
 @Path("/comments")
 public class CommentService {
 	
 	@Context
 	ServletContext ctx;
+	
+	@Context
+	HttpServletRequest request;
 	
 	public CommentService() {
 	}
@@ -75,4 +82,25 @@ public class CommentService {
 		return dao.getCommentsForSportFacility(facilityName);
 	}
 	
+	@GET
+	@Path("/canUserLeaveComment/{facilityName}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean canUserLeaveComment(@PathParam("facilityName") String facilityName) {
+		CommentDAO dao = (CommentDAO) ctx.getAttribute("commentDAO");
+		User user = (User) request.getSession().getAttribute("user");
+
+		return dao.canCustomerLeaveComment((Customer)user, facilityName);
+	}
+	
+	
+	@POST
+	@Path("/saveComment")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Comment saveComment(SaveCommentDTO dto) {
+		CommentDAO dao = (CommentDAO) ctx.getAttribute("commentDAO");
+		User user = (User) request.getSession().getAttribute("user");
+
+		return dao.saveComment(dto, (Customer)user);
+	}
 }

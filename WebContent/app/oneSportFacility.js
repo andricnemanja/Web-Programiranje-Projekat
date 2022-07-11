@@ -9,6 +9,8 @@ Vue.component("oneSportFacility", {
 				today:"",
 				workoutDTO:{checkInDateTime:null, workoutID:null},
 				selectedWorkout:{},
+				canUserLeaveComment:false,
+				commentDTO:{facilityName:"", text:"", rating:1},
 
 				url: 'https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=14681ea1598f4acba24e168748f298ef',
 				attribution:
@@ -51,6 +53,24 @@ Vue.component("oneSportFacility", {
 						<p><b>{{com.customer.firstName}} {{com.customer.lastName}}</b></p>
 						<img v-bind:src="'/FatPass/images/stars/' + com.rating + '.png'" />
 						<p>{{com.commentText}}</p>
+					</div>
+				</div>
+
+				<div clas="new-comment-div" v-if="canUserLeaveComment">
+					<button type="button" class="btn btn-primary my-4" data-bs-toggle="collapse" data-bs-target="#newComment">Ostavi komentar</button>
+					<div id="newComment" class="collapse">
+						<textarea name="new-comment-text" cols="30" rows="5" v-model="commentDTO.text"></textarea>
+						<br/>
+						<label>Ocena: </label>
+						<select v-model="commentDTO.rating">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select>
+						<br/>
+						<button type="button" class="btn btn-link my-4" v-on:click="saveComment()">Potvrdi</button>
 					</div>
 				</div>
 
@@ -104,10 +124,21 @@ Vue.component("oneSportFacility", {
 		},
 		createWorkout: function(){
 			axios.post('rest/workoutHistory/createWorkout', this.workoutDTO)
-				.then(response => (toast('Product ' + product.name + " added to the Shopping Cart")));
+
+			this.$router.push("/sportFacility");
 		},
 		selectWorkout: function(id){
 			this.workoutDTO.workoutID = id;
+		},
+		saveComment: async function(){
+			this.commentDTO.facilityName = this.selectedFacility.name;
+			await axios.post('rest/comments/saveComment', this.commentDTO);
+
+			await axios.get('rest/comments/' + this.selectedFacility.name)
+				.then(response => (this.comments = response.data));
+
+			await axios.get('rest/comments/canUserLeaveComment/' + this.selectedFacility.name)
+				.then(response => (this.canUserLeaveComment = response.data));
 		},
 
 
@@ -137,7 +168,8 @@ Vue.component("oneSportFacility", {
 		axios.get('rest/workoutHistory/getWorkoutsForFacility/' + this.selectedFacility.name)
 			.then(response => (this.workoutsForFacility = response.data));
 
-
+		axios.get('rest/comments/canUserLeaveComment/' + this.selectedFacility.name)
+			.then(response => (this.canUserLeaveComment = response.data));
 
 		this.todayDateInMiliseconds = Date.now();
 		this.today = new Date();
@@ -150,6 +182,8 @@ Vue.component("oneSportFacility", {
 		this.center = [this.selectedFacility.location.latitude, this.selectedFacility.location.longitude];
 		this.marker = L.latLng(this.selectedFacility.location.latitude, this.selectedFacility.location.longitude);
 
+
+		
 
 		document.body.style.background = "linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)";
 

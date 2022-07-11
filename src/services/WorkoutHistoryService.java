@@ -129,8 +129,12 @@ public class WorkoutHistoryService {
     	WorkoutDAO workoutDAO = (WorkoutDAO) ctx.getAttribute("workoutDAO");
 		User user = (User) request.getSession().getAttribute("user");
 		
+		
 		Workout workout = workoutDAO.getWorkout(workoutHistoryDTO.getWorkoutID());
 		WorkoutHistory workoutHistory = new WorkoutHistory(workoutHistoryDTO.getCheckInDateTime(), workout, (Customer)user, workout.getCoach());
+
+		if(!((Customer)user).getVisitedFacilities().contains(workout.getSportFacility()))
+			((Customer)user).getVisitedFacilities().add(workout.getSportFacility());
 
 		return dao.saveWorkout(workoutHistory, false);
 	}
