@@ -64,8 +64,10 @@ public class WorkoutDAO extends DAO {
 		Coach coach = coachDAO.getCoach((String) customerJSONObject.get("coachUsername"));
 		String description = (String) customerJSONObject.get("description");
 		String imageName = (String) customerJSONObject.get("imageName");
+		double additionalPayment = (Double) customerJSONObject.get("additionalPayment");
 
-		Workout newWorkout = new Workout(id, name, workoutType, sportFacility, duration, coach, description, imageName);
+
+		Workout newWorkout = new Workout(id, name, workoutType, sportFacility, duration, coach, description, imageName, additionalPayment);
 
 		workouts.put(id, newWorkout);
 	}

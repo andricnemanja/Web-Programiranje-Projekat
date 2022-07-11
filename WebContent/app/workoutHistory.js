@@ -5,12 +5,58 @@ Vue.component("workoutHistory", {
 				workoutHistoryGroup: {},
 				workoutHistoryPersonal: {},
 				currentUser: {},
-				todayDateInMiliseconds:null
+				todayDateInMiliseconds:null,
+				searchDTO:{facilityName:"", minPrice:-1, maxPrice:-1, withoutAdditionalPayment:false, facilityType:"NULL", workoutType:"NULL", sortingStrategy:"NULL"},
+				minPrice:"",
+				maxPrice:""
 		    }
 	},
-	 template: ` 
-	 <div class="container workout-history-wrapper">
+	template: ` 
+	<div class="container workout-history-wrapper">
 		<h3 class = "title">Vaši treninzi:</h3>
+	
+		<ul class="nav nav-pills" v-bind:hidden="currentUser.userType != 'COACH'">
+			<li class="nav-item">
+			<a class="nav-link active" data-bs-toggle="pill" href="#group">Grupni</a>
+			</li>
+			<li class="nav-item">
+			<a class="nav-link" data-bs-toggle="pill" href="#personal">Personalni</a>
+			</li>
+		</ul>
+		<div class="search-fields">
+			<input class="name-input" v-model="searchDTO.facilityName" v-on:input="search()" type="text" placeholder="Pretraži po imenu objekta">
+			<input class="min-price-input" v-model="minPrice" v-on:input="search()" type="text" placeholder="min cena">
+			<input class="max-price-input" v-model="maxPrice" v-on:input="search()" type="text" placeholder="max cena">
+			<input type="checkbox" id="additionalPayment" v-model="searchDTO.withoutAdditionalPayment" v-on:change="search()">
+            <label for="additionalPayment">Bez doplate</label>
+
+
+			<select v-model="searchDTO.workoutType" v-on:change="search()">
+				<option value="NULL">Tip treninga</option>
+				<option value="PERSONAL">Personalni</option>
+				<option value="GROUP">Grupni</option>
+				<option value="GYM">Teretana</option>
+			</select>
+
+
+			<select v-model="searchDTO.facilityType" v-on:change="search()">
+				<option value="NULL">Discipline</option>
+				<option value="GYM">Teretane</option>
+				<option value="DANCE_STUDIO">Plesni studio</option>
+				<option value="POOL">Bazeni</option>
+			</select>
+
+			<select class="sort" v-model="searchDTO.sortingStrategy" v-on:change="search()">
+				<option value="NULL">Sortiranje</option>
+				<option value="NAME_ASC">Naziv(rastuće)</option>
+				<option value="NAME_DESC">Naziv(opadajuće)</option>
+				<option value="ADDITIONAL_PAYMENT_ASC">Doplata(rastuće)</option>
+				<option value="ADDITIONAL_PAYMENT_DESC">Doplata(opadajuće)</option>
+				<option value="DATE_ASC">Datum(rastuće)</option>
+				<option value="DATE_DESC">Datum(opadajuće)</option>
+			</select>
+		</div>
+
 		<div class="customer-workouts" v-bind:hidden="currentUser.userType != 'CUSTOMER'">
 			<table class="table table-hover">
 				<thead>
@@ -18,6 +64,7 @@ Vue.component("workoutHistory", {
 					<th>Naziv treninga</th>
 					<th>Objekat</th>
 					<th>Datum</th>
+					<th>Doplata</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -25,6 +72,7 @@ Vue.component("workoutHistory", {
 					<td>{{workout.workout.name}}</td>
 					<td>{{workout.workout.sportFacility.name}}</td>
 					<td>{{workout.checkInDateTime | dateFormat('DD.MM.YYYY.')}}</td>
+					<td>{{workout.workout.additionalPayment | additionalPaymentFormat()}}</td>
 				</tr>
 				</tbody>
 			</table>
@@ -32,14 +80,6 @@ Vue.component("workoutHistory", {
 
 		<div class="coach-workouts" v-bind:hidden="currentUser.userType != 'COACH'">
 
-		<ul class="nav nav-pills">
-			<li class="nav-item">
-			  <a class="nav-link active" data-bs-toggle="pill" href="#group">Grupni</a>
-			</li>
-			<li class="nav-item">
-			  <a class="nav-link" data-bs-toggle="pill" href="#personal">Personalni</a>
-			</li>
-		</ul>
 		
 		<div class="tab-content">
 			<div class="tab-pane container active" id="group">
@@ -90,6 +130,32 @@ Vue.component("workoutHistory", {
 		cancelWorkout : function(workout){
 			this.workoutHistoryPersonal.splice(this.workoutHistoryPersonal.findIndex(a => a.id === workout.id) , 1);
 			axios.get('rest/workoutHistory/deleteWorkout/' + workout.id);
+		},
+		search: function(){
+			if(isNaN(this.minPrice) || this.minPrice == ""){
+				this.searchDTO.minPrice = -1;
+			}
+			else{
+				this.searchDTO.minPrice = this.minPrice;
+			}
+			if(isNaN(this.maxPrice) || this.maxPrice == ""){
+				this.searchDTO.maxPrice = -1;
+			}
+			else{
+				this.searchDTO.maxPrice = this.maxPrice;
+			}
+
+			if(this.currentUser.userType == "CUSTOMER"){
+				axios.post('rest/workoutHistory/searchCustomerWorkouts', this.searchDTO)
+					.then(response => this.workoutHistory = response.data);
+			}	
+			else if(this.currentUser.userType == "COACH"){
+				axios.post('rest/workoutHistory/searchCoachGroupWorkout', this.searchDTO)
+					.then(response => this.workoutHistoryGroup = response.data);
+					
+				axios.post('rest/workoutHistory/searchCoachPersonalWorkout', this.searchDTO)
+					.then(response => this.workoutHistoryPersonal = response.data);
+			}		
 		}
 	},
 	async mounted() {
@@ -118,6 +184,11 @@ Vue.component("workoutHistory", {
 		dateFormat: function(value, format){
 			var parsed = moment(value);
 			return parsed.format(format);
+		},
+		additionalPaymentFormat(value){
+			if(value == 0)
+				return "Nema doplate";
+			return value + " RSD";
 		}
 	}
 });

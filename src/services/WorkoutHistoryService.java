@@ -28,6 +28,7 @@ import dao.SportFacilityDAO;
 import dao.WorkoutDAO;
 import dao.WorkoutHistoryDAO;
 import dto.WorkoutHistoryDTO;
+import dto.WorkoutHistorySearchDTO;
 
 @Path("/workoutHistory")
 public class WorkoutHistoryService {
@@ -132,6 +133,42 @@ public class WorkoutHistoryService {
 		WorkoutHistory workoutHistory = new WorkoutHistory(workoutHistoryDTO.getCheckInDateTime(), workout, (Customer)user, workout.getCoach());
 
 		return dao.saveWorkout(workoutHistory, false);
+	}
+	
+	@POST
+	@Path("/searchCustomerWorkouts")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public  Collection<WorkoutHistory> searchCustomerWorkouts(WorkoutHistorySearchDTO workoutHistoryDTO) {
+		WorkoutHistoryDAO dao = (WorkoutHistoryDAO) ctx.getAttribute("workoutHistoryDAO");
+		User user = (User) request.getSession().getAttribute("user");
+		
+		return dao.search(workoutHistoryDTO, dao.getWorkoutHistoryForUser(user.getUsername()));
+
+	}
+	
+	@POST
+	@Path("/searchCoachPersonalWorkout")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public  Collection<WorkoutHistory> searchCoachPersonalWorkout(WorkoutHistorySearchDTO workoutHistoryDTO) {
+		WorkoutHistoryDAO dao = (WorkoutHistoryDAO) ctx.getAttribute("workoutHistoryDAO");
+		User user = (User) request.getSession().getAttribute("user");
+		
+		return dao.search(workoutHistoryDTO, dao.getCoachWorkoutHistory(user.getUsername(), WorkoutType.PERSONAL));
+
+	}
+	
+	@POST
+	@Path("/searchCoachGroupWorkout")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public  Collection<WorkoutHistory> searchCoachGroupWorkout(WorkoutHistorySearchDTO workoutHistoryDTO) {
+		WorkoutHistoryDAO dao = (WorkoutHistoryDAO) ctx.getAttribute("workoutHistoryDAO");
+		User user = (User) request.getSession().getAttribute("user");
+		
+		return dao.search(workoutHistoryDTO, dao.getCoachWorkoutHistory(user.getUsername(), WorkoutType.GROUP));
+
 	}
 	
 }

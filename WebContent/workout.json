@@ -1,21 +1,67 @@
 [{
 	"id": "100",
-	"name": "Slobodan trening",
+	"name": "Personalni trening",
 	"workoutType": "PERSONAL",
 	"sportFacilityName": "H2O Gym",
 	"duration": 100.00,
 	"coachUsername": "trener123",
 	"description": "PPL trening",
-	"imageName": "trening.png"
+	"imageName": "trening.png",
+	"additionalPayment": 0.00
 },
 {
 	"id": "101",
-	"name": "Vodjeni trening",
+	"name": "Jutarnji trening",
 	"workoutType": "GROUP",
 	"sportFacilityName": "Mega Gym",
+	"duration": 60.00,
+	"coachUsername": "trener123",
+	"description": "Brzi jutarnji trening",
+	"imageName": "trening.png",
+	"additionalPayment": 0.00
+},
+{
+	"id": "102",
+	"name": "Napredni trening",
+	"workoutType": "GROUP",
+	"sportFacilityName": "H2O Gym",
 	"duration": 120.00,
 	"coachUsername": "trener123",
 	"description": "PPL trening",
-	"imageName": "trening.png"
+	"imageName": "trening.png",
+	"additionalPayment": 200.00
+},
+{
+	"id": "103",
+	"name": "Core trening",
+	"workoutType": "GROUP",
+	"sportFacilityName": "H2O Gym",
+	"duration": 120.00,
+	"coachUsername": "trener123",
+	"description": "Core trening",
+	"imageName": "trening.png",
+	"additionalPayment": 100.00
+},
+{
+	"id": "104",
+	"name": "Kruzni trening",
+	"workoutType": "GROUP",
+	"sportFacilityName": "H2O Gym",
+	"duration": 120.00,
+	"coachUsername": "trener123",
+	"description": "Kruzni trening",
+	"imageName": "trening.png",
+	"additionalPayment": 0.00
+},
+{
+	"id": "105",
+	"name": "Personalni trening",
+	"workoutType": "PERSONAL",
+	"sportFacilityName": "Mega Gym",
+	"duration": 140.00,
+	"coachUsername": "trener123",
+	"description": "PHUL trening",
+	"imageName": "trening.png",
+	"additionalPayment": 0.00
 }
 ]

@@ -9,15 +9,17 @@ public class Workout {
 	private Coach coach;
 	private String description;
 	private String imageName;
+	private double additionalPayment;
 	
 	public enum WorkoutType{
+		NULL,
 		GROUP,
 		PERSONAL,
 		GYM
 	}
 	
 	public Workout(int id, String name, WorkoutType workoutType, SportFacility sportFacility, double duration,
-			Coach coach, String description, String imageName) {
+			Coach coach, String description, String imageName, double additionalPayment) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -27,6 +29,7 @@ public class Workout {
 		this.coach = coach;
 		this.description = description;
 		this.imageName = imageName;
+		this.additionalPayment = additionalPayment;
 	}
 	
 	public String getName() {
@@ -81,6 +84,15 @@ public class Workout {
 	public void setImageName(String imageName) {
 		this.imageName = imageName;
 	}
+
+	public double getAdditionalPayment() {
+		return additionalPayment;
+	}
+
+	public void setAdditionalPayment(double additionalPayment) {
+		this.additionalPayment = additionalPayment;
+	}
+	
 	
 	
 	

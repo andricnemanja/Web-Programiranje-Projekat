@@ -10,9 +10,13 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import beans.Coach;
 import beans.Customer;
+import beans.SportFacility.FacilityType;
 import beans.Workout;
 import beans.Workout.WorkoutType;
 import beans.WorkoutHistory;
+import dto.WorkoutHistoryDTO;
+import dto.WorkoutHistorySearchDTO;
+import sort.WorkoutHistorySort;
 
 public class WorkoutHistoryDAO extends DAO {
 
@@ -155,6 +159,29 @@ public class WorkoutHistoryDAO extends DAO {
 	public WorkoutHistory deleteWorkout(int id) {
 		setDeletedFlag(id);
 		return workoutHistory.remove(id);
+	}
+	
+	
+	public Collection<WorkoutHistory> search(WorkoutHistorySearchDTO dto, Collection<WorkoutHistory> workoutHistoryList){
+		ArrayList<WorkoutHistory> list = new ArrayList<WorkoutHistory>();
+		
+		for(WorkoutHistory workout : workoutHistoryList) {
+			if(dto.isWithoutAdditionalPayment() && workout.getWorkout().getAdditionalPayment() > 0)
+				continue;
+			if(dto.getMinPrice() != -1 && workout.getWorkout().getAdditionalPayment() < dto.getMinPrice())
+				continue;
+			if(dto.getMaxPrice() != -1 && workout.getWorkout().getAdditionalPayment() > dto.getMaxPrice())
+				continue;
+			if(!dto.getFacilityName().equals("") && !workout.getWorkout().getSportFacility().getName().toLowerCase().contains(dto.getFacilityName()))
+				continue;
+			if(dto.getFacilityType() != FacilityType.NULL && workout.getWorkout().getSportFacility().getFacilityType() != dto.getFacilityType())
+				continue;
+			if(dto.getWorkoutType() != WorkoutType.NULL && workout.getWorkout().getWorkoutType() != dto.getWorkoutType())
+				continue;
+			
+			list.add(workout);
+		}
+		return WorkoutHistorySort.sort(dto.getSortingStrategy(), list);
 	}
 	
 }
