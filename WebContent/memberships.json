@@ -6,7 +6,8 @@
 	"price": 2499.99,
 	"customerUsername": "milos",
 	"status": "ACTIVE",
-	"numberOfRemainingVisits": "30"
+	"numberOfRemainingVisits": "30",
+	"numberOfVisitsInMembership":"30"
 },
 {
 	"id": "1000000001",
@@ -16,6 +17,7 @@
 	"price": 2499.99,
 	"customerUsername": "jovan",
 	"status": "ACTIVE",
-	"numberOfRemainingVisits": "30"
+	"numberOfRemainingVisits": "30",
+	"numberOfVisitsInMembership":"30"
 }
 ]

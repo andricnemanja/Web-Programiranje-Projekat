@@ -57,8 +57,10 @@ public class MembershipDAO extends DAO {
 		String customerUsername = (String) customerJSONObject.get("customerUsername");
 		MembershipStatus membershipStatus = MembershipStatus.valueOf((String) customerJSONObject.get("status"));
 		int numberOfRemainingVisits = Integer.valueOf((String) customerJSONObject.get("numberOfRemainingVisits"));
+		int numberOfVisitsInMembership = Integer.valueOf((String) customerJSONObject.get("numberOfVisitsInMembership"));
+
 	
-		Membership membership = new Membership(id, membershipType, paymentDate, endDate, price, customerUsername, membershipStatus, numberOfRemainingVisits);
+		Membership membership = new Membership(id, membershipType, paymentDate, endDate, price, customerUsername, membershipStatus, numberOfRemainingVisits, numberOfVisitsInMembership);
 		memberships.put(id, membership);
 		
 		if(Integer.valueOf(id) > maxID) 

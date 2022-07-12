@@ -13,6 +13,8 @@ public class Membership {
 	private String customerUsername;
 	private MembershipStatus membershipStatus;
 	private int numberOfRemainingVisits;
+	private int numberOfVisitsInMembership;
+
 	
 	public enum MembershipType{
 		ANNUAL,
@@ -28,7 +30,7 @@ public class Membership {
 	}
 
 	public Membership(String id, MembershipType membershipType, Date paymentDate, Date endDate,
-			double price, String customerUsername, MembershipStatus membershipStatus, int numberOfRemainingVisits) {
+			double price, String customerUsername, MembershipStatus membershipStatus, int numberOfRemainingVisits, int numberOfVisitsInMembership) {
 		super();
 		this.id = id;
 		this.membershipType = membershipType;
@@ -38,6 +40,7 @@ public class Membership {
 		this.customerUsername = customerUsername;
 		this.membershipStatus = membershipStatus;
 		this.numberOfRemainingVisits = numberOfRemainingVisits;
+		this.numberOfVisitsInMembership = numberOfVisitsInMembership;
 	}
 
 	public String getId() {
@@ -111,6 +114,16 @@ public class Membership {
 	public void setCustomerUsername(String customerUsername) {
 		this.customerUsername = customerUsername;
 	}
+
+	public int getNumberOfVisitsInMembership() {
+		return numberOfVisitsInMembership;
+	}
+
+	public void setNumberOfVisitsInMembership(int numberOfVisitsInMembership) {
+		this.numberOfVisitsInMembership = numberOfVisitsInMembership;
+	}
+
+	
 	
 	
 	

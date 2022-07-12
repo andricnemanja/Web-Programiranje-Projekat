@@ -31,6 +31,7 @@ import dao.CustomerDAO;
 import dao.MembershipDAO;
 import dao.ProductDAO;
 import dao.SportFacilityDAO;
+import factories.CustomerLevelFactory;
 import factories.MembershipFactory;
 
 @Path("/membership")
@@ -165,6 +166,29 @@ public class MembershipService {
 		
 		if(membership.getEndDate().before(today)) {
 			membership.setMembershipStatus(MembershipStatus.INACTIVE);
+			
+			if(membership.getNumberOfRemainingVisits() == 0) {
+				Double points = membership.getPrice() / 1000 * membership.getNumberOfVisitsInMembership();
+				((Customer)user).setPoints(((Customer)user).getPoints() + points.intValue());
+				
+				if(((Customer)user).getPoints() > ((Customer)user).getCustomerLevel().getPointsForNextLevel())
+					((Customer)user).setCustomerLevel(CustomerLevelFactory.getNextLevel(((Customer)user).getCustomerLevel()));
+				
+				return true;
+			}
+			
+			if((double)membership.getNumberOfVisitsInMembership() / membership.getNumberOfRemainingVisits() > 3) {
+				Double lostPoints = ((Customer)user).getPoints() - membership.getPrice() / 1000 * 133 * 4;
+				((Customer)user).setPoints(lostPoints.intValue());
+			}
+			else {
+				Double points = membership.getPrice() / 1000 * (membership.getNumberOfVisitsInMembership() - membership.getNumberOfRemainingVisits());
+				((Customer)user).setPoints(((Customer)user).getPoints() + points.intValue());
+				
+				if(((Customer)user).getPoints() > ((Customer)user).getCustomerLevel().getPointsForNextLevel())
+					((Customer)user).setCustomerLevel(CustomerLevelFactory.getNextLevel(((Customer)user).getCustomerLevel()));
+			}
+			
 			return true;
 		}
 		return false;

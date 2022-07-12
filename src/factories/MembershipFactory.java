@@ -21,15 +21,15 @@ public class MembershipFactory {
 		
 		if(membershipType.equals("MONTH_12")) {
 			endDate.add(Calendar.MONTH, 1);
-			return new Membership(id, MembershipType.MONTHLY, today.getTime(), endDate.getTime(), price, customer.getUsername(), MembershipStatus.ACTIVE, 12);
+			return new Membership(id, MembershipType.MONTHLY, today.getTime(), endDate.getTime(), price, customer.getUsername(), MembershipStatus.ACTIVE, 12, 12);
 		}
 		if(membershipType.equals("MONTH_FULL")) {
 			endDate.add(Calendar.MONTH, 1);
-			return new Membership(id, MembershipType.MONTHLY, today.getTime(), endDate.getTime(), price, customer.getUsername(), MembershipStatus.ACTIVE, 31);
+			return new Membership(id, MembershipType.MONTHLY, today.getTime(), endDate.getTime(), price, customer.getUsername(), MembershipStatus.ACTIVE, 31, 31);
 		}
 		
 		endDate.add(Calendar.YEAR, 1);
-		return new Membership(id, MembershipType.ANNUAL, today.getTime(), endDate.getTime(), price, customer.getUsername(), MembershipStatus.ACTIVE, 366);
+		return new Membership(id, MembershipType.ANNUAL, today.getTime(), endDate.getTime(), price, customer.getUsername(), MembershipStatus.ACTIVE, 366, 366);
 	}
 	
 	public Membership getMembership(String id, String membershipType, Customer customer, Coupon coupon) {
