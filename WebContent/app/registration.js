@@ -1,7 +1,7 @@
 Vue.component("registration", {
 	data: function () {
 		    return {
-		      newCustomer:{firstName: null, lastName:null, username:null, gender:null, dateOfBirth:null, email:null, password:null}
+		      newCustomer:{firstName: null, lastName:null, username:null, gender:null, dateOfBirth:null, email:null, password:null, userType:"CUSTOMER"}
 		    }
 	},
 	template: ` 
@@ -24,11 +24,12 @@ Vue.component("registration", {
 `
 	, 
 	methods : {
-		saveCustomer : function () {
-			axios
-			.post('rest/customers/register', this.newCustomer)
-			.then(response => (toast('Product ' + product.name + " added to the Shopping Cart")));
-			window.location.href = "#/sportFacility";
+		saveCustomer : async function () {
+			await axios.post('rest/customers/register', this.newCustomer)
+
+			
+			this.$router.push("/sportFacility");
+
 		}
 	},
 	mounted () {

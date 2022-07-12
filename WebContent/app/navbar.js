@@ -7,22 +7,28 @@ Vue.component("navbar", {
 	},
 	 template: ` 
 	 <nav class="navbar navbar-expand-sm navbar-dark">
-		<div class="container-fluid">	 
+		<div class="container">	 
 			<a class="navbar-brand text-center" href="#/">
 				<img class="logo" src="/FatPass/images/logoWhite.png">
 			</a>	 
 		  <ul class="navbar-nav me-auto">
-			<li class="nav-item">
-			  <a v-bind:class="['nav-link', (page == '#/sportFacility' ? 'active' : '')]" href="#/sportFacility">Objekti</a>
+			<li class="nav-item" v-if="currentUser != ''">
+			  <a class="nav-link active" href="#/sportFacility">Objekti</a>
 			</li>
-		   <li class="nav-item">
-			  <a v-bind:class="['nav-link', (page == '#/workoutHistory' ? 'active' : '')]" href="#/workoutHistory">Treninzi</a>
+		   <li class="nav-item" v-if="currentUser != ''">
+			  <a class="nav-link active" href="#/workoutHistory">Treninzi</a>
 			</li>
 			<li v-if="currentUser.userType == 'CUSTOMER'" class="nav-item">
-			  <a class="nav-link" href="#/membership">Članarina</a>
+			  <a class="nav-link active" href="#/membership">Članarina</a>
 			</li>
-			<li class="nav-item">
-			  <a class="nav-link" href="#">Profil</a>
+		  </ul>
+
+		  <ul class="navbar-nav ms-auto">
+			<li class="nav-item" v-if="currentUser != ''">
+			  <a class="nav-link active" v-on:click="logout()">Odjavi se</a>
+			</li>
+			<li class="nav-item" v-if="currentUser == ''">
+			  <a class="nav-link active" href="#/">Prijavi se</a>
 			</li>
 		  </ul>
 		</div>
@@ -30,13 +36,9 @@ Vue.component("navbar", {
     	`,
 	
 	methods: {
-		filterName : function() {
-			if(this.nameSearhField == ""){
-				this.facilities = {... this.backupFacilities};
-			}
-			else{
-				this.facilities = this.facilities.filter((f) => f.name.toLowerCase().includes(this.nameSearhField.toLowerCase()));
-			}
+		logout: function(){
+			axios.post('rest/logout')
+			this.$router.push("/");
 		}
 	},
 	mounted() {

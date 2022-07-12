@@ -13,6 +13,7 @@ public class Customer extends User {
 	
 	public Customer() {
 		super();
+		visitedFacilities = new ArrayList<>();
 	}
 
 	public Customer(String firstName, String lastName, String email, String username, String password,

@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -17,7 +18,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import beans.Customer;
+import beans.CustomerLevel;
 import beans.Product;
+import beans.CustomerLevel.CustomerType;
 import dao.CustomerDAO;
 import dao.MembershipDAO;
 import dao.ProductDAO;
@@ -27,6 +30,9 @@ public class CustomerService {
 	
 	@Context
 	ServletContext ctx;
+	
+	@Context
+	HttpServletRequest request;
 	
 	public CustomerService() {
 	}
@@ -58,6 +64,9 @@ public class CustomerService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Customer newCustomer(Customer customer) {
 		CustomerDAO dao = (CustomerDAO) ctx.getAttribute("customerDAO");
+		customer.setCustomerLevel(new CustomerLevel(CustomerType.BRONZE, 2, 1000));
+		request.getSession().setAttribute("user", customer);
+		
 		return dao.saveCustomer(customer);
 	}
 	
