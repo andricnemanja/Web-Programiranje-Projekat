@@ -1,6 +1,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
@@ -148,8 +149,25 @@ public class MembershipService {
 		if(membership.getMembershipStatus() == MembershipStatus.ACTIVE && membership.getNumberOfRemainingVisits() > 0)
 			return true;
 		return false;
+	}
+	
+	@GET
+	@Path("/isMembershipExpired")
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean isMembershipExpired() {
 		
+		User user = (User) request.getSession().getAttribute("user");
+		if(user == null) 
+			return true;
+		Membership membership = ((Customer)user).getMembership();
 		
+		Date today = new Date();
+		
+		if(membership.getEndDate().before(today)) {
+			membership.setMembershipStatus(MembershipStatus.INACTIVE);
+			return true;
+		}
+		return false;
 	}
 	
 }

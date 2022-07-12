@@ -152,12 +152,14 @@ Vue.component("oneSportFacility", {
 			this.bounds = bounds;
 		}
 	},
-	mounted() {
+	async mounted() {
 		this.selectedFacility = this.$route.params.selectedFacility;
 		
 		if(!this.selectedFacility){
 			this.$router.push("/sportFacility");
 		}
+
+		await axios.get('rest/membership/isMembershipExpired/')
 
 		axios.get('rest/comments/' + this.selectedFacility.name)
 			.then(response => (this.comments = response.data));

@@ -12,7 +12,7 @@
 	"id": "1000000001",
 	"type": "MONTHLY",
 	"paymentDate": "20-06-2022 12:00",
-	"endDate": "20-07-2022 12:00",
+	"endDate": "20-06-2022 12:00",
 	"price": 2499.99,
 	"customerUsername": "jovan",
 	"status": "ACTIVE",

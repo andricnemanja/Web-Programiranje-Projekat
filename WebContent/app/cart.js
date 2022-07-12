@@ -13,7 +13,7 @@ Vue.component("cart", {
 		<h1 class="title pb-5 text-center">Izabrana članarina</h1>
 
 		<div class="row justify-content-center">
-			<div class="col-lg-4" v-if="selectedMembership == 'MONTH_12'">
+			<div class="col-lg-5" v-if="selectedMembership == 'MONTH_12'">
 				<div class="bg-white p-5 rounded-lg shadow box">
 
 					<div class="header text-center px-5">
@@ -33,7 +33,7 @@ Vue.component("cart", {
 				</div>
 			</div>
 
-			<div class="col-lg-4" v-if="selectedMembership == 'MONTH_FULL'">
+			<div class="col-lg-5" v-if="selectedMembership == 'MONTH_FULL'">
 				<div class="bg-white p-5 rounded-lg shadow box">
 
 					<div class="header text-center px-5">
@@ -53,7 +53,7 @@ Vue.component("cart", {
 				</div>
 			</div>
 
-			<div class="col-lg-4" v-if="selectedMembership == 'YEAR'">
+			<div class="col-lg-5" v-if="selectedMembership == 'YEAR'">
 				<div class="bg-white p-5 rounded-lg shadow box">
 
 					<div class="header text-center px-5">

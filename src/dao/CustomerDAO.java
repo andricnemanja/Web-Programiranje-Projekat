@@ -17,6 +17,7 @@ import beans.CustomerLevel;
 import beans.CustomerLevel.CustomerType;
 import beans.User;
 import beans.User.Gender;
+import factories.CustomerLevelFactory;
 
 public class CustomerDAO {
 	
@@ -73,11 +74,13 @@ public class CustomerDAO {
 		String password = (String) customerJSONObject.get("password");	
 		Gender gender = Gender.valueOf((String) customerJSONObject.get("gender"));
 		String dateOfBirthString = (String) customerJSONObject.get("dateOfBirth");
+		CustomerType customerType = CustomerType.valueOf((String)customerJSONObject.get("customerType"));
 		
+		CustomerLevel customerLevel = CustomerLevelFactory.getCustomerLevel(customerType);
 		Date date = DateParser.parseDate(dateOfBirthString);
 		
 		Customer newCustomer = new Customer(firstName, lastName, email, username, password, gender, date);
-		newCustomer.setCustomerLevel(new CustomerLevel(CustomerType.BRONZE, 0, 1000));
+		newCustomer.setCustomerLevel(customerLevel);
 		newCustomer.setMembership(membershipDAO.getMembershipForCustomer(username));
 		customers.put(username, newCustomer);
 
